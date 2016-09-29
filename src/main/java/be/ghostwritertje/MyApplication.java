@@ -1,3 +1,5 @@
+package be.ghostwritertje;
+
 import org.apache.wicket.Page;
 import org.apache.wicket.protocol.http.WebApplication;
 
