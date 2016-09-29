@@ -1,5 +1,3 @@
-package be.ghostwritertje;
-
 import org.apache.wicket.markup.html.WebPage;
 
 /**
