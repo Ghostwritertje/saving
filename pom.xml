@@ -37,7 +37,7 @@
     <build>
         <finalName>WicketExamples</finalName>
 
-   <!--     <resources>
+        <resources>
             <resource>
                 <directory>src/main/resources</directory>
             </resource>
@@ -51,9 +51,9 @@
                     <exclude>**/*.java</exclude>
                 </excludes>
             </resource>
-        </resources>-->
+        </resources>
 
-        <plugins>
+<!--        <plugins>
             <plugin>
                 <inherited>true</inherited>
                 <groupId>org.apache.maven.plugins</groupId>
@@ -65,7 +65,7 @@
                 </configuration>
             </plugin>
         </plugins>
-    </build>
+    </build>-->
 
 <profiles>
     <profile>
