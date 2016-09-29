@@ -15,7 +15,7 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <wicket.version>8.0.0-M1</wicket.version>
         <spring.version>4.3.3.RELEASE</spring.version>
-        <postgres.version>9.4.1211.jre7</postgres.version>
+        <postgres.version>9.4.1211</postgres.version>
         <hibernate.version>5.2.2.Final</hibernate.version>
     </properties>
 
@@ -58,9 +58,9 @@
             <version>${spring.version}</version>
         </dependency>
         <dependency>
-            <groupId>postgresql</groupId>
+            <groupId>org.postgresql</groupId>
             <artifactId>postgresql</artifactId>
-            <version>${postgres.version}</version>
+            <version>9.4.1211.jre7</version>
         </dependency>
 
         <dependency>
