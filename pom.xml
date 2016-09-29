@@ -40,30 +40,7 @@
                 <filtering>false</filtering>
                 <directory>src/main/resources</directory>
             </resource>
-            <resource>
-                <filtering>false</filtering>
-                <directory>src/main/java</directory>
-                <includes>
-                    <include>**</include>
-                </includes>
-                <excludes>
-                    <exclude>**/*.java</exclude>
-                </excludes>
-            </resource>
         </resources>
-
-<!--        <plugins>
-            <plugin>
-                <inherited>true</inherited>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <configuration>
-                    <source>1.8</source>
-                    <target>1.8</target>
-                    <debug>true</debug>
-                </configuration>
-            </plugin>
-        </plugins>-->
     </build>
 
 <profiles>
@@ -75,22 +52,6 @@
      <id>openshift</id>
      <build>
         <finalName>saving</finalName>
-         <resources>
-             <resource>
-                 <filtering>false</filtering>
-                 <directory>src/main/resources</directory>
-             </resource>
-             <resource>
-                 <filtering>false</filtering>
-                 <directory>src/main/java</directory>
-                 <includes>
-                     <include>**</include>
-                 </includes>
-                 <excludes>
-                     <exclude>**/*.java</exclude>
-                 </excludes>
-             </resource>
-         </resources>
         <plugins>
           <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
