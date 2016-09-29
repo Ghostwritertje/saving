@@ -64,8 +64,8 @@
                     <debug>true</debug>
                 </configuration>
             </plugin>
-        </plugins>
-    </build>-->
+        </plugins>-->
+    </build>
 
 <profiles>
     <profile>
