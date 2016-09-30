@@ -24,6 +24,7 @@ import java.util.Properties;
 public class PersistenceConfig {
 
     @Bean
+    @Autowired
     public JpaTransactionManager transactionManager(DataSource dataSource){
         JpaTransactionManager jpaTransactionManager = new JpaTransactionManager();
         jpaTransactionManager.setDataSource(dataSource);
@@ -31,7 +32,8 @@ public class PersistenceConfig {
     }
 
     @Bean
-    public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean(DataSource dataSource, Properties jpaProperties){
+    @Autowired
+    public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource, Properties jpaProperties){
         LocalContainerEntityManagerFactoryBean entityManagerFactory = new LocalContainerEntityManagerFactoryBean();
         entityManagerFactory.setDataSource(dataSource);
         entityManagerFactory.setPackagesToScan("be.ghostwritertje.domain");
