@@ -27,7 +27,7 @@ public class PersistenceConfig {
     ) {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("org.postgresql.Driver");
-        dataSource.setUrl("jdbc:" +url + "/saving");
+        dataSource.setUrl("jdbc:postgresql://"+host + ":"+ port + "/saving" + "?user=" + username + "&password=" + password);
         dataSource.setUsername(username);
         dataSource.setPassword(password);
         System.out.println(url);
@@ -40,7 +40,6 @@ public class PersistenceConfig {
         LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
         sessionFactory.setDataSource(dataSource);
 //        sessionFactory.setConfigLocation(new ClassPathResource("hibernate.cfg.xml"));
-
         Properties properties = new Properties();
         properties.setProperty("connection.pool_size", "1");
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQL94Dialect");
