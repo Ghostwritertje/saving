@@ -48,6 +48,8 @@ public class PersistenceConfig {
         properties.setProperty("hbm2ddl.auto", "create");
         sessionFactory.setHibernateProperties(properties);
 
+        sessionFactory.setAnnotatedPackages("be.ghostwritertje.domain");
+
         return sessionFactory;
     }
 }
