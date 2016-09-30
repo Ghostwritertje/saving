@@ -20,7 +20,7 @@ public class UserDaoImpl implements UserDao {
     public void createUser(String username) {
         Transaction transaction = sessionFactory.getCurrentSession().beginTransaction();
         try {
-            sessionFactory.getCurrentSession().saveOrUpdate(new User(username));
+            sessionFactory.getCurrentSession().saveOrUpdate(new User());
             transaction.commit();
         } catch (ConstraintViolationException e) {
             transaction.rollback();
