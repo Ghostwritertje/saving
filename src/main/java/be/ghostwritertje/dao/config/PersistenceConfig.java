@@ -8,6 +8,9 @@ import org.springframework.context.annotation.Configuration;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
+import org.springframework.orm.jpa.JpaTransactionManager;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
 
 import javax.sql.DataSource;
 import java.util.Properties;
@@ -19,6 +22,25 @@ import java.util.Properties;
 @EnableJpaRepositories({"be.ghostwritertje.dao.repository"})
 @Configuration
 public class PersistenceConfig {
+
+    @Bean
+    public JpaTransactionManager transactionManager(DataSource dataSource){
+        JpaTransactionManager jpaTransactionManager = new JpaTransactionManager();
+        jpaTransactionManager.setDataSource(dataSource);
+        return jpaTransactionManager;
+    }
+
+    @Bean
+    public LocalContainerEntityManagerFactoryBean entityManagerFactoryBean(DataSource dataSource, Properties jpaProperties){
+        LocalContainerEntityManagerFactoryBean entityManagerFactory = new LocalContainerEntityManagerFactoryBean();
+        entityManagerFactory.setDataSource(dataSource);
+        entityManagerFactory.setPackagesToScan("be.ghostwritertje.domain");
+
+        entityManagerFactory.setJpaVendorAdapter(new HibernateJpaVendorAdapter());
+        entityManagerFactory.setJpaProperties(jpaProperties);
+
+        return entityManagerFactory;
+    }
 
     @Bean
     public DataSource dataSource(
@@ -38,17 +60,23 @@ public class PersistenceConfig {
     }
 
     @Bean
-    @Autowired
-    public SessionFactory sessionFactoryBean(DataSource dataSource) {
-        LocalSessionFactoryBuilder sessionFactoryBuilder = new LocalSessionFactoryBuilder(dataSource);
-//        sessionFactory.setConfigLocation(new ClassPathResource("hibernate.cfg.xml"));
+    public Properties jpaProperties(){
         Properties properties = new Properties();
         properties.setProperty("connection.pool_size", "1");
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQL94Dialect");
         properties.setProperty("hibernate.current_session_context_class", "org.hibernate.context.internal.ThreadLocalSessionContext");
         properties.setProperty("hibernate.show_sql", "false");
         properties.setProperty("hibernate.hbm2ddl.auto", "create");
-        sessionFactoryBuilder.addProperties(properties);
+        return properties;
+    }
+
+    @Bean
+    @Autowired
+    public SessionFactory sessionFactoryBean(DataSource dataSource, Properties jpaProperties) {
+        LocalSessionFactoryBuilder sessionFactoryBuilder = new LocalSessionFactoryBuilder(dataSource);
+//        sessionFactory.setConfigLocation(new ClassPathResource("hibernate.cfg.xml"));
+
+        sessionFactoryBuilder.addProperties(jpaProperties);
 
         sessionFactoryBuilder.scanPackages("be.ghostwritertje.domain");
 
