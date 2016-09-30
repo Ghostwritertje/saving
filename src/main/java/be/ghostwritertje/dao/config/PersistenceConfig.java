@@ -5,6 +5,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
 import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 
@@ -15,6 +16,7 @@ import java.util.Properties;
  * Created by Ghostwritertje
  * Date: 29-Sep-16.
  */
+@EnableJpaRepositories({"be.ghostwritertje.dao.repository"})
 @Configuration
 public class PersistenceConfig {
 

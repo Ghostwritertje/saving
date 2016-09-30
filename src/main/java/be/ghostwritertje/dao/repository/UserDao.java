@@ -1,4 +1,4 @@
-package be.ghostwritertje.dao;
+package be.ghostwritertje.dao.repository;
 
 import be.ghostwritertje.domain.User;
 import org.springframework.data.repository.CrudRepository;

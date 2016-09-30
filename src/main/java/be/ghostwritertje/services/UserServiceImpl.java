@@ -1,6 +1,6 @@
 package be.ghostwritertje.services;
 
-import be.ghostwritertje.dao.UserDao;
+import be.ghostwritertje.dao.repository.UserDao;
 import be.ghostwritertje.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
