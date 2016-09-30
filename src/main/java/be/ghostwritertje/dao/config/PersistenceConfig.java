@@ -47,7 +47,7 @@ public class PersistenceConfig {
 
         Properties properties = new Properties();
         properties.setProperty("connection.pool_size", "1");
-        properties.setProperty("dialect", "org.hibernate.dialect.PostgreSQL94Dialect");
+        properties.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQL94Dialect");
         properties.setProperty("hibernate.current_session_context_class", "org.hibernate.context.internal.ThreadLocalSessionContext");
         properties.setProperty("show_sql", "false");
         properties.setProperty("hbm2ddl.auto", "create");
