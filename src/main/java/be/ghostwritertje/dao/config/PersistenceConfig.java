@@ -22,19 +22,15 @@ public class PersistenceConfig {
             @Value("${OPENSHIFT_POSTGRESQL_HOST}") String host,
             @Value("${OPENSHIFT_POSTGRESQL_PORT}") String port,
             @Value("${OPENSHIFT_POSTGRESQL_USERNAME}") String username,
-            @Value("${OPENSHIFT_POSTGRESQL_DB_PASSWORD}") String password
+            @Value("${OPENSHIFT_POSTGRESQL_DB_PASSWORD}") String password,
+            @Value("${OPENSHIFT_POSTGRESQL_DB_URL}") String url
     ) {
         DriverManagerDataSource dataSource = new DriverManagerDataSource();
         dataSource.setDriverClassName("org.postgresql.Driver");
-        dataSource.setUrl(
-                "jdbc:postgresql://"
-                        + host
-                        + ":"
-                        + port
-                        + "/preview");
+        dataSource.setUrl(url);
         dataSource.setUsername(username);
         dataSource.setPassword(password);
-
+        System.out.println(url);
         return dataSource;
     }
 
