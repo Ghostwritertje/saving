@@ -1,8 +1,12 @@
 package be.ghostwritertje.services;
 
 import be.ghostwritertje.dao.UserDao;
+import be.ghostwritertje.domain.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Created by Ghostwritertje
@@ -15,8 +19,18 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public String getLoggedInUser() {
-        this.userDao.createUser("Ghostwriter");
-
-        return "Example User";
+        return this.userDao.save(new User("Ghostwritertje")).getUsername();
     }
+
+    @Override
+    public List<User> findAll() {
+        Iterable<User> userIterable =  this.userDao.findAll();
+
+        List<User> userList = new ArrayList<>();
+        userIterable.forEach(userList::add);
+
+        return userList;
+    }
+
+
 }
