@@ -1,3 +1,6 @@
+import de.agilecoders.wicket.core.Bootstrap;
+import de.agilecoders.wicket.core.settings.BootstrapSettings;
+import de.agilecoders.wicket.core.settings.IBootstrapSettings;
 import org.apache.wicket.Page;
 import org.apache.wicket.protocol.http.WebApplication;
 import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
@@ -17,5 +20,12 @@ public class MyApplication extends WebApplication {
     protected void init() {
         super.init();
         super.getComponentInstantiationListeners().add(new SpringComponentInjector(this));
+        this.configureBootstrap();
+    }
+
+    private void configureBootstrap() {
+        IBootstrapSettings settings = new BootstrapSettings();
+        Bootstrap.install(this, settings);
+
     }
 }

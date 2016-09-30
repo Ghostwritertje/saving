@@ -1,6 +1,7 @@
+package be.ghostwritertje;
+
 import be.ghostwritertje.domain.User;
 import be.ghostwritertje.services.UserService;
-import org.apache.wicket.markup.html.WebPage;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
@@ -10,7 +11,7 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
  * Created by Ghostwritertje
  * Date: 30-Sep-16.
  */
-public class UsersPage extends WebPage {
+public class UsersPage extends BasePage {
     @SpringBean
     private UserService userService;
 

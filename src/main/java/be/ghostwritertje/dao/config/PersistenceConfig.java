@@ -69,17 +69,4 @@ public class PersistenceConfig {
         properties.setProperty("hibernate.hbm2ddl.auto", "create");
         return properties;
     }
-
- /*   @Bean
-    @Autowired
-    public SessionFactory sessionFactoryBean(DataSource dataSource, Properties jpaProperties) {
-        LocalSessionFactoryBuilder sessionFactoryBuilder = new LocalSessionFactoryBuilder(dataSource);
-//        sessionFactory.setConfigLocation(new ClassPathResource("hibernate.cfg.xml"));
-
-        sessionFactoryBuilder.addProperties(jpaProperties);
-
-        sessionFactoryBuilder.scanPackages("be.ghostwritertje.domain");
-
-        return sessionFactoryBuilder.buildSessionFactory();
-    }*/
 }
