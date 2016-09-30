@@ -19,9 +19,9 @@ public class PersistenceConfig {
 
     @Bean
     public DataSource dataSource(
-            @Value("${OPENSHIFT_POSTGRESQL_HOST}") String host,
-            @Value("${OPENSHIFT_POSTGRESQL_PORT}") String port,
-            @Value("${OPENSHIFT_POSTGRESQL_USERNAME}") String username,
+            @Value("${OPENSHIFT_POSTGRESQL_DB_HOST}") String host,
+            @Value("${OPENSHIFT_POSTGRESQL_DB_PORT}") String port,
+            @Value("${OPENSHIFT_POSTGRESQL_DB_USERNAME}") String username,
             @Value("${OPENSHIFT_POSTGRESQL_DB_PASSWORD}") String password,
             @Value("${OPENSHIFT_POSTGRESQL_DB_URL}") String url
     ) {
