@@ -1,11 +1,12 @@
 package be.ghostwritertje.dao.config;
 
+import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.datasource.DriverManagerDataSource;
-import org.springframework.orm.hibernate4.LocalSessionFactoryBean;
+import org.springframework.orm.hibernate5.LocalSessionFactoryBuilder;
 
 import javax.sql.DataSource;
 import java.util.Properties;
@@ -36,9 +37,8 @@ public class PersistenceConfig {
 
     @Bean
     @Autowired
-    public LocalSessionFactoryBean sessionFactoryBean(DataSource dataSource) {
-        LocalSessionFactoryBean sessionFactory = new LocalSessionFactoryBean();
-        sessionFactory.setDataSource(dataSource);
+    public SessionFactory sessionFactoryBean(DataSource dataSource) {
+        LocalSessionFactoryBuilder sessionFactoryBuilder = new LocalSessionFactoryBuilder(dataSource);
 //        sessionFactory.setConfigLocation(new ClassPathResource("hibernate.cfg.xml"));
         Properties properties = new Properties();
         properties.setProperty("connection.pool_size", "1");
@@ -46,10 +46,10 @@ public class PersistenceConfig {
         properties.setProperty("hibernate.current_session_context_class", "org.hibernate.context.internal.ThreadLocalSessionContext");
         properties.setProperty("show_sql", "false");
         properties.setProperty("hbm2ddl.auto", "create");
-        sessionFactory.setHibernateProperties(properties);
+        sessionFactoryBuilder.addProperties(properties);
 
-        sessionFactory.setAnnotatedPackages("be.ghostwritertje.domain");
+        sessionFactoryBuilder.scanPackages("be.ghostwritertje.domain");
 
-        return sessionFactory;
+        return sessionFactoryBuilder.buildSessionFactory();
     }
 }
