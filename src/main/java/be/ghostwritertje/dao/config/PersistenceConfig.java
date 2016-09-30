@@ -44,8 +44,8 @@ public class PersistenceConfig {
         properties.setProperty("connection.pool_size", "1");
         properties.setProperty("hibernate.dialect", "org.hibernate.dialect.PostgreSQL94Dialect");
         properties.setProperty("hibernate.current_session_context_class", "org.hibernate.context.internal.ThreadLocalSessionContext");
-        properties.setProperty("show_sql", "false");
-        properties.setProperty("hbm2ddl.auto", "create");
+        properties.setProperty("hibernate.show_sql", "false");
+        properties.setProperty("hibernate.hbm2ddl.auto", "create");
         sessionFactoryBuilder.addProperties(properties);
 
         sessionFactoryBuilder.scanPackages("be.ghostwritertje.domain");
