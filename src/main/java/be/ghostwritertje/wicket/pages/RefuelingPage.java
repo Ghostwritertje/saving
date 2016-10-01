@@ -4,11 +4,13 @@ import be.ghostwritertje.domain.Refueling;
 import be.ghostwritertje.services.RefuelingService;
 import be.ghostwritertje.wicket.BasePage;
 import be.ghostwritertje.wicket.LocalDateTextField;
+import be.ghostwritertje.wicket.model.CarModel;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.NumberTextField;
 import org.apache.wicket.markup.html.form.SubmitLink;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.LambdaModel;
+import org.apache.wicket.model.Model;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import java.time.LocalDate;
@@ -41,8 +43,8 @@ public class RefuelingPage extends BasePage<Refueling> {
             @Override
             public void onSubmit() {
                 super.onSubmit();
-                RefuelingPage.this.refuelingService.save(RefuelingPage.this.getModelObject());
-                this.setResponsePage(new Hello());
+                Refueling savedRefueling = RefuelingPage.this.refuelingService.save(RefuelingPage.this.getModelObject());
+                this.setResponsePage(new RefuelingListPage(new CarModel(new Model<Integer>(savedRefueling.getCar().getId()))));
             }
         });
 

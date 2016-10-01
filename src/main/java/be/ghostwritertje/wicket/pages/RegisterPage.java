@@ -38,7 +38,7 @@ public class RegisterPage extends BasePage<Person> {
             public void onSubmit() {
                 super.onSubmit();
                 RegisterPage.this.personService.save(RegisterPage.this.getModelObject());
-                this.setResponsePage(new Hello());
+                this.setResponsePage(new LoginPage());
             }
         });
 

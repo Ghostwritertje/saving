@@ -9,7 +9,7 @@ import java.util.List;
  * Created by Jorandeboever
  * Date: 01-Oct-16.
  */
-public interface RefuelingService {
+public interface RefuelingService extends DomainObjectReadService<Refueling> {
 
     List<Refueling> findByCar(Car car);
 

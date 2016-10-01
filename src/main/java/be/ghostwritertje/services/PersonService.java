@@ -8,7 +8,7 @@ import java.util.List;
  * Created by Ghostwritertje
  * Date: 29-Sep-16.
  */
-public interface PersonService {
+public interface PersonService extends DomainObjectReadService<Person> {
     String getLoggedInUser();
 
     List<Person> findAll();

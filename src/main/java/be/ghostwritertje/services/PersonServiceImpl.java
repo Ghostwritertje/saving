@@ -3,6 +3,7 @@ package be.ghostwritertje.services;
 import be.ghostwritertje.dao.repository.PersonDao;
 import be.ghostwritertje.domain.Person;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
@@ -14,13 +15,15 @@ import java.util.List;
  * Date: 29-Sep-16.
  */
 @Service
-public class PersonServiceImpl implements PersonService {
+public class PersonServiceImpl extends DomainObjectReadServiceSupport<Person> implements PersonService {
     @Autowired
     private PersonDao dao;
 
     @PostConstruct
     private void postConstruct() {
-        this.dao.save(new Person("Ghostwritertje"));
+        Person ghostwritertje = new Person("Ghostwritertje");
+        ghostwritertje.setPassword("password");
+        this.dao.save(ghostwritertje);
     }
 
     @Override
@@ -53,5 +56,8 @@ public class PersonServiceImpl implements PersonService {
         return this.dao.findByUsernameAndPassword(person.getUsername(), person.getPassword());
     }
 
-
+    @Override
+    protected CrudRepository<Person, Integer> getDao() {
+        return this.dao;
+    }
 }

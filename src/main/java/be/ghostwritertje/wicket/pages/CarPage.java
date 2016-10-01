@@ -4,11 +4,13 @@ import be.ghostwritertje.domain.Car;
 import be.ghostwritertje.services.CarService;
 import be.ghostwritertje.wicket.BasePage;
 import be.ghostwritertje.wicket.LocalDateTextField;
+import be.ghostwritertje.wicket.model.PersonModel;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.SubmitLink;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.LambdaModel;
+import org.apache.wicket.model.Model;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import java.time.LocalDate;
@@ -40,8 +42,8 @@ public class CarPage extends BasePage<Car> {
             @Override
             public void onSubmit() {
                 super.onSubmit();
-                CarPage.this.carService.save(CarPage.this.getModelObject());
-                this.setResponsePage(new Hello());
+                Car savedCar = CarPage.this.carService.save(CarPage.this.getModelObject());
+                this.setResponsePage(new CarListPage(new PersonModel(new Model<Integer>(savedCar.getOwner().getId()))));
             }
         });
 

@@ -1,5 +1,5 @@
 import be.ghostwritertje.wicket.CustomSession;
-import be.ghostwritertje.wicket.pages.Hello;
+import be.ghostwritertje.wicket.pages.LoginPage;
 import de.agilecoders.wicket.core.Bootstrap;
 import de.agilecoders.wicket.core.settings.BootstrapSettings;
 import de.agilecoders.wicket.core.settings.IBootstrapSettings;
@@ -18,7 +18,7 @@ public class MyApplication extends WebApplication {
 
     @Override
     public Class<? extends Page> getHomePage() {
-        return Hello.class;
+        return LoginPage.class;
     }
 
     @Override

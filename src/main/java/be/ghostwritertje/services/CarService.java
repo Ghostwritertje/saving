@@ -9,7 +9,7 @@ import java.util.List;
  * Created by Jorandeboever
  * Date: 01-Oct-16.
  */
-public interface CarService {
+public interface CarService extends DomainObjectReadService<Car> {
     List<Car> findAll(Person person);
 
     Car save(Car car);
