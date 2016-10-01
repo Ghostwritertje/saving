@@ -1,7 +1,4 @@
-package be.ghostwritertje.domain.money;
-
-import be.ghostwritertje.domain.DomainObject;
-import be.ghostwritertje.domain.Person;
+package be.ghostwritertje.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;

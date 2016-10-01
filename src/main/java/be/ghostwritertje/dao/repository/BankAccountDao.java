@@ -1,7 +1,7 @@
 package be.ghostwritertje.dao.repository;
 
+import be.ghostwritertje.domain.BankAccount;
 import be.ghostwritertje.domain.Person;
-import be.ghostwritertje.domain.money.BankAccount;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.List;
@@ -12,5 +12,8 @@ import java.util.List;
  */
 public interface BankAccountDao extends CrudRepository<BankAccount, Integer> {
 
-    List<BankAccount> findByOwner(Person owner);
+    List<BankAccount> findByAdministrator(Person administrator);
+
+    @Override
+    <S extends BankAccount> Iterable<S> save(Iterable<S> entities);
 }

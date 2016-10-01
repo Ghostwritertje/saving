@@ -1,6 +1,4 @@
-package be.ghostwritertje.domain.money;
-
-import be.ghostwritertje.domain.DomainObject;
+package be.ghostwritertje.domain;
 
 import javax.persistence.Entity;
 import javax.persistence.Table;
@@ -10,8 +8,8 @@ import javax.persistence.Table;
  * Date: 01-Oct-16.
  */
 @Entity
-@Table(name = "T_CATEGORY")
-public class Category extends DomainObject {
+@Table(name = "T_BANK")
+public class Bank extends DomainObject {
     private String name;
 
     public String getName() {

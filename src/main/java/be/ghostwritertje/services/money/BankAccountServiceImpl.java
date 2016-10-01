@@ -1,8 +1,8 @@
 package be.ghostwritertje.services.money;
 
 import be.ghostwritertje.dao.repository.BankAccountDao;
+import be.ghostwritertje.domain.BankAccount;
 import be.ghostwritertje.domain.Person;
-import be.ghostwritertje.domain.money.BankAccount;
 import be.ghostwritertje.services.DomainObjectReadServiceSupport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
@@ -25,7 +25,12 @@ public class BankAccountServiceImpl extends DomainObjectReadServiceSupport<BankA
     }
 
     @Override
-    public List<BankAccount> findByOwner(Person owner) {
-        return this.dao.findByOwner(owner);
+    public List<BankAccount> findByAdministrator(Person administrator) {
+        return this.dao.findByAdministrator(administrator);
+    }
+
+    @Override
+    public Iterable<BankAccount> save(Iterable<BankAccount> bankAccounts) {
+        return this.dao.save(bankAccounts);
     }
 }

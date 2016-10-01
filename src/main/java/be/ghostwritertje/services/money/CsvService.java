@@ -1,9 +1,9 @@
 package be.ghostwritertje.services.money;
 
 
+import be.ghostwritertje.domain.BankAccount;
 import be.ghostwritertje.domain.Person;
-import be.ghostwritertje.domain.money.BankAccount;
-import be.ghostwritertje.domain.money.Statement;
+import be.ghostwritertje.domain.Statement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -37,7 +37,7 @@ public class CsvService {
         String line;
         String cvsSplitBy = ";";
 
-        Map<String, BankAccount> bankAccountMap = bankAccountService.findByOwner(person).stream().collect(Collectors.toConcurrentMap(BankAccount::getNumber, b -> b));
+        Map<String, BankAccount> bankAccountMap = bankAccountService.findByAdministrator(person).stream().collect(Collectors.toConcurrentMap(BankAccount::getNumber, b -> b));
 
         List<Statement> statementList = new ArrayList<>();
 
@@ -72,14 +72,18 @@ public class CsvService {
                         BankAccount bankAccount = new BankAccount();
                         bankAccount.setNumber(toAccount);
                         bankAccount.setAdministrator(person);
-                        bankAccountMap.put(fromAccount, bankAccount);
+                        bankAccountMap.put(toAccount, bankAccount);
                         return bankAccount;
                     });
 
                     statement.setFrom(from);
                     statement.setTo(to);
+                    statementList.add(statement);
                 }
             }
+
+//            this.bankAccountService.save(bankAccountMap.values());
+            this.statementService.save(statementList);
 
         } catch (IOException e) {
             e.printStackTrace();
