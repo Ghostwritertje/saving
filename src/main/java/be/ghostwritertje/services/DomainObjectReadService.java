@@ -8,4 +8,5 @@ import be.ghostwritertje.domain.DomainObject;
  */
 public interface DomainObjectReadService<T extends DomainObject> {
     public T findOne(Integer id);
+
 }
