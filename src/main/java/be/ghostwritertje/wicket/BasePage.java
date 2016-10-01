@@ -1,6 +1,6 @@
 package be.ghostwritertje.wicket;
 
-import be.ghostwritertje.wicket.pages.PersonsPage;
+import be.ghostwritertje.wicket.pages.PersonListPage;
 import be.ghostwritertje.wicket.pages.RegisterPage;
 import org.apache.wicket.markup.html.GenericWebPage;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
@@ -23,7 +23,7 @@ public abstract class BasePage<T> extends GenericWebPage<T> {
     protected void onInitialize() {
         super.onInitialize();
 
-        this.add(new BookmarkablePageLink("usersLink", PersonsPage.class));
+        this.add(new BookmarkablePageLink("usersLink", PersonListPage.class));
         this.add(new BookmarkablePageLink("registerLink", RegisterPage.class));
 
     }

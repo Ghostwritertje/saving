@@ -13,7 +13,7 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
  * Created by Ghostwritertje
  * Date: 30-Sep-16.
  */
-public class PersonsPage extends BasePage<Void> {
+public class PersonListPage extends BasePage<Void> {
     @SpringBean
     private PersonService personService;
 
@@ -28,7 +28,7 @@ public class PersonsPage extends BasePage<Void> {
                 item.add(new Link<Person>("carsList") {
                     @Override
                     public void onClick() {
-                        setResponsePage(new CarsPage(item.getModel()));
+                        setResponsePage(new CarListPage(item.getModel()));
                     }
                 });
 

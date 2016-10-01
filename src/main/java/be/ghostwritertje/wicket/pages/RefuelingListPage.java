@@ -18,12 +18,12 @@ import java.time.LocalDate;
  * Created by Jorandeboever
  * Date: 01-Oct-16.
  */
-public class RefuelingsPage extends BasePage<Car> {
+public class RefuelingListPage extends BasePage<Car> {
 
     @SpringBean
     private RefuelingService refuelingService;
 
-    protected RefuelingsPage(IModel<Car> model) {
+    protected RefuelingListPage(IModel<Car> model) {
         super(model);
     }
 
@@ -45,7 +45,7 @@ public class RefuelingsPage extends BasePage<Car> {
             @Override
             public void onClick() {
                 Refueling refueling = new Refueling();
-                refueling.setCar(RefuelingsPage.this.getModelObject());
+                refueling.setCar(RefuelingListPage.this.getModelObject());
                 refueling.setDate(LocalDate.now());
                 this.setResponsePage(new RefuelingPage(new Model<Refueling>(refueling)));
             }

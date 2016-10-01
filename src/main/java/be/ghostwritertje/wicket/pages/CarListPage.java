@@ -19,12 +19,12 @@ import java.time.LocalDate;
  * Created by Jorandeboever
  * Date: 01-Oct-16.
  */
-public class CarsPage extends BasePage<Person> {
+public class CarListPage extends BasePage<Person> {
 
     @SpringBean
     private CarService carService;
 
-    protected CarsPage(IModel<Person> model) {
+    protected CarListPage(IModel<Person> model) {
         super(model);
     }
 
@@ -45,7 +45,7 @@ public class CarsPage extends BasePage<Person> {
 
                     @Override
                     public void onClick() {
-                        setResponsePage(new RefuelingsPage(item.getModel()));
+                        setResponsePage(new RefuelingListPage(item.getModel()));
                     }
                 });
                 item.add(new Label("model", item.getModelObject().getModel()));
@@ -59,7 +59,7 @@ public class CarsPage extends BasePage<Person> {
             @Override
             public void onClick() {
                 Car car = new Car();
-                car.setOwner(CarsPage.this.getModelObject());
+                car.setOwner(CarListPage.this.getModelObject());
                 car.setPurchaseDate(LocalDate.now());
                 this.setResponsePage(new CarPage(new Model<Car>(car)));
             }
