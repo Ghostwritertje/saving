@@ -1,7 +1,8 @@
-package be.ghostwritertje.wicket.model;
+package be.ghostwritertje.wicket.car.model;
 
 import be.ghostwritertje.domain.Refueling;
-import be.ghostwritertje.services.RefuelingService;
+import be.ghostwritertje.services.car.RefuelingService;
+import be.ghostwritertje.wicket.model.LoadableModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 

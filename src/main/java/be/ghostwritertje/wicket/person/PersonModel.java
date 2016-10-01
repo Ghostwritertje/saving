@@ -1,7 +1,8 @@
-package be.ghostwritertje.wicket.model;
+package be.ghostwritertje.wicket.person;
 
 import be.ghostwritertje.domain.Person;
-import be.ghostwritertje.services.PersonService;
+import be.ghostwritertje.services.person.PersonService;
+import be.ghostwritertje.wicket.model.LoadableModel;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 

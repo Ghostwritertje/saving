@@ -1,9 +1,9 @@
-package be.ghostwritertje.wicket.pages;
+package be.ghostwritertje.wicket.car.pages;
 
 import be.ghostwritertje.domain.Car;
 import be.ghostwritertje.domain.Person;
 import be.ghostwritertje.domain.Refueling;
-import be.ghostwritertje.services.CarService;
+import be.ghostwritertje.services.car.CarService;
 import be.ghostwritertje.wicket.BasePage;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.Link;
@@ -24,7 +24,7 @@ public class CarListPage extends BasePage<Person> {
     @SpringBean
     private CarService carService;
 
-    protected CarListPage(IModel<Person> model) {
+    public CarListPage(IModel<Person> model) {
         super(model);
     }
 

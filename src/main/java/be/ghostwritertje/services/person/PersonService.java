@@ -1,6 +1,7 @@
-package be.ghostwritertje.services;
+package be.ghostwritertje.services.person;
 
 import be.ghostwritertje.domain.Person;
+import be.ghostwritertje.services.DomainObjectReadService;
 
 import java.util.List;
 

@@ -1,7 +1,8 @@
-package be.ghostwritertje.services;
+package be.ghostwritertje.services.person;
 
 import be.ghostwritertje.dao.repository.PersonDao;
 import be.ghostwritertje.domain.Person;
+import be.ghostwritertje.services.DomainObjectReadServiceSupport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;

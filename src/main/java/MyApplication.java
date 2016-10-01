@@ -1,5 +1,5 @@
 import be.ghostwritertje.wicket.CustomSession;
-import be.ghostwritertje.wicket.pages.LoginPage;
+import be.ghostwritertje.wicket.person.pages.LoginPage;
 import de.agilecoders.wicket.core.Bootstrap;
 import de.agilecoders.wicket.core.settings.BootstrapSettings;
 import de.agilecoders.wicket.core.settings.IBootstrapSettings;

@@ -1,10 +1,11 @@
-package be.ghostwritertje.wicket.pages;
+package be.ghostwritertje.wicket.person.pages;
 
 import be.ghostwritertje.domain.Person;
-import be.ghostwritertje.services.PersonService;
+import be.ghostwritertje.services.person.PersonService;
 import be.ghostwritertje.wicket.BasePage;
 import be.ghostwritertje.wicket.CustomSession;
-import be.ghostwritertje.wicket.model.PersonModel;
+import be.ghostwritertje.wicket.car.pages.CarListPage;
+import be.ghostwritertje.wicket.person.PersonModel;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.form.SubmitLink;

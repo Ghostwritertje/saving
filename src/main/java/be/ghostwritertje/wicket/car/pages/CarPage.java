@@ -1,10 +1,10 @@
-package be.ghostwritertje.wicket.pages;
+package be.ghostwritertje.wicket.car.pages;
 
 import be.ghostwritertje.domain.Car;
-import be.ghostwritertje.services.CarService;
+import be.ghostwritertje.services.car.CarService;
 import be.ghostwritertje.wicket.BasePage;
 import be.ghostwritertje.wicket.LocalDateTextField;
-import be.ghostwritertje.wicket.model.PersonModel;
+import be.ghostwritertje.wicket.person.PersonModel;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.SubmitLink;
 import org.apache.wicket.markup.html.form.TextField;

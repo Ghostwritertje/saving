@@ -1,8 +1,9 @@
-package be.ghostwritertje.wicket.pages;
+package be.ghostwritertje.wicket.person.pages;
 
 import be.ghostwritertje.domain.Person;
-import be.ghostwritertje.services.PersonService;
+import be.ghostwritertje.services.person.PersonService;
 import be.ghostwritertje.wicket.BasePage;
+import be.ghostwritertje.wicket.car.pages.CarListPage;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;

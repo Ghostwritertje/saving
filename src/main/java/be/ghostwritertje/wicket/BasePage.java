@@ -1,8 +1,8 @@
 package be.ghostwritertje.wicket;
 
-import be.ghostwritertje.wicket.pages.LoginPage;
-import be.ghostwritertje.wicket.pages.PersonListPage;
-import be.ghostwritertje.wicket.pages.RegisterPage;
+import be.ghostwritertje.wicket.person.pages.LoginPage;
+import be.ghostwritertje.wicket.person.pages.PersonListPage;
+import be.ghostwritertje.wicket.person.pages.RegisterPage;
 import org.apache.wicket.markup.html.GenericWebPage;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;

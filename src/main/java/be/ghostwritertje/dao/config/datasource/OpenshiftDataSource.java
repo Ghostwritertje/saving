@@ -29,6 +29,7 @@ public class OpenshiftDataSource {
         dataSource.setUrl("jdbc:postgresql://" + host + ":" + port + "/saving" + "?user=" + username + "&password=" + password);
         dataSource.setUsername(username);
         dataSource.setPassword(password);
+
         System.out.println("Using openshift DataSource");
         return dataSource;
     }
