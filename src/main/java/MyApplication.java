@@ -1,9 +1,13 @@
+import be.ghostwritertje.wicket.CustomSession;
 import be.ghostwritertje.wicket.pages.Hello;
 import de.agilecoders.wicket.core.Bootstrap;
 import de.agilecoders.wicket.core.settings.BootstrapSettings;
 import de.agilecoders.wicket.core.settings.IBootstrapSettings;
 import org.apache.wicket.Page;
+import org.apache.wicket.Session;
 import org.apache.wicket.protocol.http.WebApplication;
+import org.apache.wicket.request.Request;
+import org.apache.wicket.request.Response;
 import org.apache.wicket.spring.injection.annot.SpringComponentInjector;
 
 /**
@@ -27,6 +31,10 @@ public class MyApplication extends WebApplication {
     private void configureBootstrap() {
         IBootstrapSettings settings = new BootstrapSettings();
         Bootstrap.install(this, settings);
+    }
 
+    @Override
+    public Session newSession(Request request, Response response) {
+        return new CustomSession(request);
     }
 }

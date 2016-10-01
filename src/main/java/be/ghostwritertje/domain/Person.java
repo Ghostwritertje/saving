@@ -22,6 +22,9 @@ public class Person extends DomainObject {
     }
 
     public String getUsername() {
+        if (this.username == null) {
+            this.username = "";
+        }
         return username;
     }
 

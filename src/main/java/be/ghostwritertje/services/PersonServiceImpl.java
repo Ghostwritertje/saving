@@ -48,5 +48,10 @@ public class PersonServiceImpl implements PersonService {
         return this.dao.save(person);
     }
 
+    @Override
+    public Person logIn(Person person) {
+        return this.dao.findByUsernameAndPassword(person.getUsername(), person.getPassword());
+    }
+
 
 }

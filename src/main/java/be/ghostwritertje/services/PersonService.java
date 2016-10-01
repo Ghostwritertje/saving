@@ -16,4 +16,6 @@ public interface PersonService {
     Person findByUsername(String username);
 
     Person save(Person person);
+
+    Person logIn(Person person);
 }
