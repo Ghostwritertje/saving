@@ -13,6 +13,8 @@ import org.apache.wicket.model.LambdaModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
+import java.util.Optional;
+
 /**
  * Created by Jorandeboever
  * Date: 01-Oct-16.
@@ -31,16 +33,17 @@ public class LoginPage extends BasePage<Person> {
 
         Form<Person> form = new Form<>("form", this.getModel());
 
-        form.add(new TextField<String>("username", new LambdaModel<>(() -> this.getModel().getObject().getUsername(), username -> this.getModel().getObject().setUsername(username))));
-        form.add(new PasswordTextField("password", new LambdaModel<>(() -> this.getModelObject().getPassword(), password -> this.getModelObject().setPassword(password))));
+        form.add(new TextField<String>("username", new LambdaModel<>(() -> this.getModel().getObject().getUsername(), username -> this.getModel().getObject().setUsername(username))).setRequired(true));
+        form.add(new PasswordTextField("password", new LambdaModel<>(() -> this.getModelObject().getPassword(), password -> this.getModelObject().setPassword(password))).setRequired(true));
 
         form.add(new SubmitLink("save") {
             @Override
             public void onSubmit() {
                 super.onSubmit();
-                Person savedPerson = LoginPage.this.personService.logIn(LoginPage.this.getModelObject());
-                CustomSession.get().setLoggedInPerson(savedPerson);
-                this.setResponsePage(new CarListPage(new PersonModel(new Model<Integer>(savedPerson.getId()))));
+                Optional.ofNullable(LoginPage.this.personService.logIn(LoginPage.this.getModelObject())).ifPresent(person -> {
+                    CustomSession.get().setLoggedInPerson(person);
+                    this.setResponsePage(new CarListPage(new PersonModel(new Model<Integer>(person.getId()))));
+                });
             }
         });
 
