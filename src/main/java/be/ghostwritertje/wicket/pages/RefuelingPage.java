@@ -41,6 +41,7 @@ public class RefuelingPage extends BasePage<Refueling> {
             @Override
             public void onSubmit() {
                 super.onSubmit();
+                RefuelingPage.this.refuelingService.save(RefuelingPage.this.getModelObject());
                 this.setResponsePage(new Hello());
             }
         });

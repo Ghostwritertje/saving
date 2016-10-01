@@ -16,21 +16,21 @@ import java.util.List;
 @Service
 public class PersonServiceImpl implements PersonService {
     @Autowired
-    private PersonDao personDao;
+    private PersonDao dao;
 
     @PostConstruct
     private void postConstruct() {
-        this.personDao.save(new Person("Ghostwritertje"));
+        this.dao.save(new Person("Ghostwritertje"));
     }
 
     @Override
     public String getLoggedInUser() {
-        return this.personDao.findByUsername("Ghostwritertje").getUsername();
+        return this.dao.findByUsername("Ghostwritertje").getUsername();
     }
 
     @Override
     public List<Person> findAll() {
-        Iterable<Person> userIterable = this.personDao.findAll();
+        Iterable<Person> userIterable = this.dao.findAll();
 
         List<Person> personList = new ArrayList<>();
         userIterable.forEach(personList::add);
@@ -40,7 +40,12 @@ public class PersonServiceImpl implements PersonService {
 
     @Override
     public Person findByUsername(String username) {
-        return this.personDao.findByUsername(username);
+        return this.dao.findByUsername(username);
+    }
+
+    @Override
+    public Person save(Person person) {
+        return this.dao.save(person);
     }
 
 

@@ -14,4 +14,6 @@ public interface PersonService {
     List<Person> findAll();
 
     Person findByUsername(String username);
+
+    Person save(Person person);
 }
