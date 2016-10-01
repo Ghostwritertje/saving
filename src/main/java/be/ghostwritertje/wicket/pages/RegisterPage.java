@@ -28,19 +28,19 @@ public class RegisterPage extends BasePage<Person> {
     protected void onInitialize() {
         super.onInitialize();
 
-        Form<Person> form = new Form<>("form", this.getModel());
-
-        form.add(new TextField<String>("username", new LambdaModel<>(() -> this.getModel().getObject().getUsername(), username -> this.getModel().getObject().setUsername(username))).setRequired(true));
-        form.add(new PasswordTextField("password", new LambdaModel<>(() -> this.getModelObject().getPassword(), password -> this.getModelObject().setPassword(password))).setRequired(true));
-
-        form.add(new SubmitLink("save") {
+        Form<Person> form = new Form<Person>("form", this.getModel()) {
             @Override
             public void onSubmit() {
                 super.onSubmit();
                 RegisterPage.this.personService.save(RegisterPage.this.getModelObject());
                 this.setResponsePage(new LoginPage());
             }
-        });
+        };
+
+        form.add(new TextField<String>("username", new LambdaModel<>(() -> this.getModel().getObject().getUsername(), username -> this.getModel().getObject().setUsername(username))).setRequired(true));
+        form.add(new PasswordTextField("password", new LambdaModel<>(() -> this.getModelObject().getPassword(), password -> this.getModelObject().setPassword(password))).setRequired(true));
+
+        form.add(new SubmitLink("save"));
 
         this.add(form);
     }

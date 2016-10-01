@@ -32,21 +32,21 @@ public class RefuelingPage extends BasePage<Refueling> {
     protected void onInitialize() {
         super.onInitialize();
 
-        Form<Refueling> form = new Form<>("form", this.getModel());
-
-        IModel<LocalDate> localDateLambdaModel = new LambdaModel<>(() -> this.getModel().getObject().getDate(), localDate -> this.getModel().getObject().setDate(localDate));
-        form.add(new LocalDateTextField("date", localDateLambdaModel));
-        form.add(new NumberTextField<Double>("liters", new LambdaModel<Double>(() -> this.getModelObject().getLiters(), liters -> this.getModelObject().setLiters(liters)), Double.class));
-        form.add(new NumberTextField<Double>("price", new LambdaModel<Double>(() -> this.getModelObject().getPrice(), price -> this.getModelObject().setPrice(price)), Double.class));
-
-        form.add(new SubmitLink("save") {
+        Form<Refueling> form = new Form<Refueling>("form", this.getModel()) {
             @Override
             public void onSubmit() {
                 super.onSubmit();
                 Refueling savedRefueling = RefuelingPage.this.refuelingService.save(RefuelingPage.this.getModelObject());
                 this.setResponsePage(new RefuelingListPage(new CarModel(new Model<Integer>(savedRefueling.getCar().getId()))));
             }
-        });
+        };
+
+        IModel<LocalDate> localDateLambdaModel = new LambdaModel<>(() -> this.getModel().getObject().getDate(), localDate -> this.getModel().getObject().setDate(localDate));
+        form.add(new LocalDateTextField("date", localDateLambdaModel));
+        form.add(new NumberTextField<Double>("liters", new LambdaModel<Double>(() -> this.getModelObject().getLiters(), liters -> this.getModelObject().setLiters(liters)), Double.class));
+        form.add(new NumberTextField<Double>("price", new LambdaModel<Double>(() -> this.getModelObject().getPrice(), price -> this.getModelObject().setPrice(price)), Double.class));
+
+        form.add(new SubmitLink("save"));
 
         this.add(form);
     }
