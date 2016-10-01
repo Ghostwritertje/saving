@@ -17,11 +17,8 @@ public class Car extends DomainObject {
     @ManyToOne
     @JoinColumn(name = "owner_id")
     private Person owner;
-
     private String brand;
-
     private String model;
-
     private LocalDate purchaseDate;
 
     public Person getOwner() {

@@ -40,14 +40,6 @@ public class PersistenceConfig {
         return jpaTransactionManager;
     }
 
-    public static void main(String[] args) {
-/*        Map<String, String> map = System.getenv();
-        map.forEach((s, s2) -> System.out.println("KEY: " + s + ",VALUE:" + s2));*/
-
-        Properties map2 = System.getProperties();
-        map2.forEach((s, s2) -> System.out.println("KEY: " + s + ",VALUE:" + s2));
-    }
-
     @Bean
     @Autowired
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(DataSource dataSource, Properties jpaProperties) {

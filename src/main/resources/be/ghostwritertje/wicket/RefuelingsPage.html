@@ -2,20 +2,20 @@
 <html xmlns="http://www.w3.org/1999/xhtml" xmlns:wicket="http://wicket.apache.org">
 <body>
 <wicket:extend>
-    <h2>Cars</h2>
+    <h2>Refuelings</h2>
     <table class="table">
         <thead>
         <tr>
-            <th>Brand</th>
-            <th>Model</th>
-            <th>Purchase Date</th>
+            <th>Date</th>
+            <th>Liters</th>
+            <th>Price</th>
         </tr>
         </thead>
         <tbody>
-        <tr wicket:id="cars">
-            <td><a wicket:id="refuelingsLink"> <label wicket:id="brand"></label></a></td>
-            <td wicket:id="model"></td>
-            <td wicket:id="purchaseDate"></td>
+        <tr wicket:id="refuelings">
+            <td wicket:id="date"></td>
+            <td wicket:id="liters"></td>
+            <td wicket:id="price"></td>
         </tr>
         </tbody>
     </table>
