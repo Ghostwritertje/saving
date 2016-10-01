@@ -20,6 +20,7 @@ public class Car extends DomainObject {
     private String brand;
     private String model;
     private LocalDate purchaseDate;
+    private FuelType fuelType;
 
     public Person getOwner() {
         return owner;
@@ -51,5 +52,17 @@ public class Car extends DomainObject {
 
     public void setPurchaseDate(LocalDate purchaseDate) {
         this.purchaseDate = purchaseDate;
+    }
+
+    public FuelType getFuelType() {
+        return fuelType;
+    }
+
+    public void setFuelType(FuelType fuelType) {
+        this.fuelType = fuelType;
+    }
+
+    public enum FuelType {
+        DIESEL, BENZINE
     }
 }
