@@ -27,16 +27,13 @@ public abstract class BasePage<T> extends GenericWebPage<T> {
         super.onInitialize();
 
         this.add(new BookmarkablePageLink("usersLink", PersonListPage.class));
-        this.add(new BookmarkablePageLink("registerLink", RegisterPage.class));
-        this.add(new BookmarkablePageLink("loginLink", LoginPage.class));
+        this.add(new BookmarkablePageLink("registerLink", RegisterPage.class)
+                .add(new VisibilityBehavior<>(component -> CustomSession.get().getLoggedInPerson() == null)));
+        this.add(new BookmarkablePageLink("loginLink", LoginPage.class)
+                .add(new VisibilityBehavior<>(component -> CustomSession.get().getLoggedInPerson() == null)));
 
         this.add(new Label("loggedInUsername", new LambdaModel<>(() -> CustomSession.get().getLoggedInPerson().getUsername(), s -> {
-        })) {
-            @Override
-            public boolean isVisible() {
-                return CustomSession.get().getLoggedInPerson() != null;//todo_joran
-            }
-        });
+        })).add(new VisibilityBehavior<>(component -> CustomSession.get().getLoggedInPerson() != null)));
 
     }
 
