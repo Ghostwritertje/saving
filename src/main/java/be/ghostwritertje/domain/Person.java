@@ -17,6 +17,8 @@ public class Person extends DomainObject {
     @Column(nullable = false)
     private String password;
 
+    private String test;
+
     public Person() {
     }
 
