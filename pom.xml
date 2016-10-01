@@ -10,6 +10,7 @@
     <name>saving</name>
 
     <properties>
+        <application.config>${env.USERNAME}</application.config>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -90,6 +91,12 @@
         </dependency>
 
         <dependency>
+            <groupId>com.h2database</groupId>
+            <artifactId>h2</artifactId>
+            <version>1.4.192</version>
+        </dependency>
+
+        <dependency>
             <groupId>de.agilecoders.wicket</groupId>
             <artifactId>wicket-bootstrap-core</artifactId>
             <version>2.0.0-M1</version>
@@ -109,12 +116,14 @@
                 <artifactId>tomcat7-maven-plugin</artifactId>
                 <version>2.2</version>
                 <configuration>
-
                     <update>true</update>
                     <url>http://127.0.0.1:8080/manager/text</url>
                     <username>tomcat</username>
                     <password>tomcat</password>
                     <path>/</path>
+                    <systemProperties>
+                        <application.config>${application.config}</application.config>
+                    </systemProperties>
                 </configuration>
             </plugin>
         </plugins>
