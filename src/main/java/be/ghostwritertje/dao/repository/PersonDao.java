@@ -1,6 +1,6 @@
 package be.ghostwritertje.dao.repository;
 
-import be.ghostwritertje.domain.User;
+import be.ghostwritertje.domain.Person;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -9,11 +9,11 @@ import org.springframework.stereotype.Repository;
  * Date: 29-Sep-16.
  */
 @Repository
-public interface UserDao extends CrudRepository<User, Integer> {
+public interface PersonDao extends CrudRepository<Person, Integer> {
 
-/*    User createOrUpdate(String username);
+/*    Person createOrUpdate(String username);
 
-    List<User> findAll();
+    List<Person> findByOwner();
 
-    User get(String username);*/
+    Person get(String username);*/
 }

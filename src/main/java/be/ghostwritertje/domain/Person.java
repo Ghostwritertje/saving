@@ -1,24 +1,22 @@
 package be.ghostwritertje.domain;
 
-import javax.persistence.*;
+import javax.persistence.Entity;
+import javax.persistence.Table;
 
 /**
  * Created by Ghostwritertje
  * Date: 29-Sep-16.
  */
-@Table(name = "T_USER")
+@Table(name = "T_PERSON")
 @Entity
-public class User {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Integer id;
+public class Person extends DomainObject {
 
     private String username;
 
-    public User() {
+    public Person() {
     }
 
-    public User(String username) {
+    public Person(String username) {
         this.username = username;
     }
 
