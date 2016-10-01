@@ -10,7 +10,6 @@
     <name>saving</name>
 
     <properties>
-        <application.config>${env.USERNAME}</application.config>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.8</maven.compiler.source>
         <maven.compiler.target>1.8</maven.compiler.target>
@@ -135,7 +134,7 @@
                     <password>tomcat</password>
                     <path>/</path>
                     <systemProperties>
-                        <application.config>${application.config}</application.config>
+                        <application.config>local</application.config>
                     </systemProperties>
                 </configuration>
             </plugin>
