@@ -11,4 +11,6 @@ import java.util.List;
  */
 public interface CarService {
     List<Car> findAll(Person person);
+
+    Car save(Car car);
 }

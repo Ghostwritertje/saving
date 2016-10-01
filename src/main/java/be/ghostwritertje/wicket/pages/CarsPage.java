@@ -2,6 +2,7 @@ package be.ghostwritertje.wicket.pages;
 
 import be.ghostwritertje.domain.Car;
 import be.ghostwritertje.domain.Person;
+import be.ghostwritertje.domain.Refueling;
 import be.ghostwritertje.services.CarService;
 import be.ghostwritertje.wicket.BasePage;
 import org.apache.wicket.markup.html.basic.Label;
@@ -9,7 +10,10 @@ import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.Model;
 import org.apache.wicket.spring.injection.annot.SpringBean;
+
+import java.time.LocalDate;
 
 /**
  * Created by Jorandeboever
@@ -47,6 +51,17 @@ public class CarsPage extends BasePage<Person> {
                 item.add(new Label("model", item.getModelObject().getModel()));
                 item.add(new Label("purchaseDate", item.getModelObject().getPurchaseDate()));
 
+            }
+        });
+
+
+        this.add(new Link<Refueling>("newCarLink") {
+            @Override
+            public void onClick() {
+                Car car = new Car();
+                car.setOwner(CarsPage.this.getModelObject());
+                car.setPurchaseDate(LocalDate.now());
+                this.setResponsePage(new CarPage(new Model<Car>(car)));
             }
         });
 

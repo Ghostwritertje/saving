@@ -17,7 +17,7 @@ import java.util.List;
 @Service
 public class CarServiceImpl implements CarService {
     @Autowired
-    private CarDao carDao;
+    private CarDao dao;
 
     @Autowired
     private PersonService personService;
@@ -29,11 +29,16 @@ public class CarServiceImpl implements CarService {
         car.setModel("Punto");
         car.setPurchaseDate(LocalDate.now());
         car.setOwner(personService.findByUsername("Ghostwritertje"));
-        this.carDao.save(car);
+        this.dao.save(car);
     }
 
     @Override
     public List<Car> findAll(Person owner) {
-        return this.carDao.findByOwner(owner);
+        return this.dao.findByOwner(owner);
+    }
+
+    @Override
+    public Car save(Car car) {
+        return this.dao.save(car);
     }
 }
