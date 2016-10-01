@@ -1,5 +1,6 @@
 package be.ghostwritertje.domain;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.Table;
 
@@ -11,6 +12,7 @@ import javax.persistence.Table;
 @Entity
 public class Person extends DomainObject {
 
+    @Column(unique = true, nullable = false)
     private String username;
     private String password;
 
