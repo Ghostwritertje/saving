@@ -5,6 +5,7 @@ import be.ghostwritertje.domain.Person;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -17,9 +18,14 @@ public class PersonServiceImpl implements PersonService {
     @Autowired
     private PersonDao personDao;
 
+    @PostConstruct
+    private void postConstruct() {
+        this.personDao.save(new Person("Ghostwritertje"));
+    }
+
     @Override
     public String getLoggedInUser() {
-        return this.personDao.save(new Person("Ghostwritertje")).getUsername();
+        return this.personDao.findByUsername("Ghostwritertje").getUsername();
     }
 
     @Override
@@ -30,6 +36,11 @@ public class PersonServiceImpl implements PersonService {
         userIterable.forEach(personList::add);
 
         return personList;
+    }
+
+    @Override
+    public Person findByUsername(String username) {
+        return this.personDao.findByUsername(username);
     }
 
 

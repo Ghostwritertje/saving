@@ -159,6 +159,9 @@
                             <failOnMissingWebXml>false</failOnMissingWebXml>
                             <outputDirectory>deployments</outputDirectory>
                             <warName>ROOT</warName>
+                            <systemProperties>
+                                <application.config>local</application.config>
+                            </systemProperties>
                         </configuration>
                     </plugin>
                 </plugins>

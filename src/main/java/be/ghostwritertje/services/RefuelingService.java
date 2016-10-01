@@ -12,4 +12,6 @@ import java.util.List;
 public interface RefuelingService {
 
     List<Refueling> findByCar(Car car);
+
+    Refueling save(Refueling refueling);
 }

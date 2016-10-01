@@ -12,4 +12,6 @@ public interface PersonService {
     String getLoggedInUser();
 
     List<Person> findAll();
+
+    Person findByUsername(String username);
 }

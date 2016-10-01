@@ -22,4 +22,9 @@ public class RefuelingServiceImpl implements RefuelingService {
     public List<Refueling> findByCar(Car car) {
         return this.dao.findByCar(car);
     }
+
+    @Override
+    public Refueling save(Refueling refueling) {
+        return this.dao.save(refueling);
+    }
 }

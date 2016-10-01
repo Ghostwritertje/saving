@@ -11,9 +11,5 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface PersonDao extends CrudRepository<Person, Integer> {
 
-/*    Person createOrUpdate(String username);
-
-    List<Person> findByOwner();
-
-    Person get(String username);*/
+    Person findByUsername(String username);
 }

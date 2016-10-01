@@ -1,13 +1,18 @@
-package be.ghostwritertje.wicket;
+package be.ghostwritertje.wicket.pages;
 
 import be.ghostwritertje.domain.Car;
 import be.ghostwritertje.domain.Refueling;
 import be.ghostwritertje.services.RefuelingService;
+import be.ghostwritertje.wicket.BasePage;
 import org.apache.wicket.markup.html.basic.Label;
+import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.Model;
 import org.apache.wicket.spring.injection.annot.SpringBean;
+
+import java.time.LocalDate;
 
 /**
  * Created by Jorandeboever
@@ -22,6 +27,7 @@ public class RefuelingsPage extends BasePage<Car> {
         super(model);
     }
 
+
     @Override
     protected void onInitialize() {
         super.onInitialize();
@@ -32,7 +38,16 @@ public class RefuelingsPage extends BasePage<Car> {
                 item.add(new Label("date", item.getModelObject().getDate()));
                 item.add(new Label("liters", item.getModelObject().getLiters()));
                 item.add(new Label("price", item.getModelObject().getPrice()));
+            }
+        });
 
+        this.add(new Link<Refueling>("newRefuelingLink") {
+            @Override
+            public void onClick() {
+                Refueling refueling = new Refueling();
+                refueling.setCar(RefuelingsPage.this.getModelObject());
+                refueling.setDate(LocalDate.now());
+                this.setResponsePage(new RefuelingPage(new Model<Refueling>(refueling)));
             }
         });
     }

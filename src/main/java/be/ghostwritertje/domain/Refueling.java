@@ -21,7 +21,13 @@ public class Refueling extends DomainObject {
     private Double liters;
     private Double price;
 
+    public Refueling() {
+    }
+
     public LocalDate getDate() {
+        if (this.date == null) {
+            this.date = LocalDate.now();
+        }
         return date;
     }
 
@@ -43,5 +49,13 @@ public class Refueling extends DomainObject {
 
     public void setPrice(Double price) {
         this.price = price;
+    }
+
+    public Car getCar() {
+        return car;
+    }
+
+    public void setCar(Car car) {
+        this.car = car;
     }
 }

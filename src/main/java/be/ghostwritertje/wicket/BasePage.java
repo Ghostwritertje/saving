@@ -1,5 +1,6 @@
 package be.ghostwritertje.wicket;
 
+import be.ghostwritertje.wicket.pages.PersonsPage;
 import org.apache.wicket.markup.html.GenericWebPage;
 import org.apache.wicket.markup.html.link.BookmarkablePageLink;
 import org.apache.wicket.model.IModel;
