@@ -7,8 +7,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
-import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -22,16 +20,6 @@ public class CarServiceImpl extends DomainObjectReadServiceSupport<Car> implemen
 
     @Autowired
     private PersonService personService;
-
-    @PostConstruct
-    private void postConstruct() {
-        Car car = new Car();
-        car.setBrand("Fiat");
-        car.setModel("Punto");
-        car.setPurchaseDate(LocalDate.now());
-        car.setOwner(personService.findByUsername("Ghostwritertje"));
-        this.dao.save(car);
-    }
 
     @Override
     public List<Car> findAll(Person owner) {

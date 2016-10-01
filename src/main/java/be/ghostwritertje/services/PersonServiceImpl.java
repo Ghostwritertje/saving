@@ -6,7 +6,6 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.PostConstruct;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -18,13 +17,6 @@ import java.util.List;
 public class PersonServiceImpl extends DomainObjectReadServiceSupport<Person> implements PersonService {
     @Autowired
     private PersonDao dao;
-
-    @PostConstruct
-    private void postConstruct() {
-        Person ghostwritertje = new Person("Ghostwritertje");
-        ghostwritertje.setPassword("password");
-        this.dao.save(ghostwritertje);
-    }
 
     @Override
     public String getLoggedInUser() {

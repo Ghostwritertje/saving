@@ -4,7 +4,6 @@ import org.hibernate.dialect.H2Dialect;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
-import org.springframework.jdbc.datasource.embedded.EmbeddedDatabase;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseBuilder;
 import org.springframework.jdbc.datasource.embedded.EmbeddedDatabaseType;
 
@@ -24,11 +23,10 @@ public class H2DataSource {
 
     ) {
         EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
-        EmbeddedDatabase db = builder
+        return builder
                 .setType(EmbeddedDatabaseType.H2)
                 .setName("h2")
                 .build();
-        return db;
     }
 
     @Bean
@@ -39,7 +37,7 @@ public class H2DataSource {
         properties.setProperty("hibernate.connection.url", "jdbc:h2:~/test");
         properties.setProperty("hibernate.current_session_context_class", "org.hibernate.context.internal.ThreadLocalSessionContext");
         properties.setProperty("hibernate.show_sql", "false");
-        properties.setProperty("hibernate.hbm2ddl.auto", "create");
+        properties.setProperty("hibernate.hbm2ddl.auto", "update");
         return properties;
     }
 }
