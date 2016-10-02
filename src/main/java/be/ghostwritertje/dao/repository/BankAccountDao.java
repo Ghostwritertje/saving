@@ -14,6 +14,8 @@ public interface BankAccountDao extends CrudRepository<BankAccount, Integer> {
 
     List<BankAccount> findByAdministrator(Person administrator);
 
+    List<BankAccount> findByOwner(Person owner);
+
     @Override
     <S extends BankAccount> Iterable<S> save(Iterable<S> entities);
 }

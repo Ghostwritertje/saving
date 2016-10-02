@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 import java.time.format.DateTimeFormatter;
 import java.util.ArrayList;
@@ -52,7 +53,7 @@ public class CsvService {
 
                 if (row.length > 0 && row[0].startsWith("BE")) {
                     Statement statement = new Statement();
-                    statement.setAmount(Double.parseDouble(row[10].replace(",", ".")));
+                    statement.setAmount(BigDecimal.valueOf(Double.parseDouble(row[10].replace(",", "."))));
                     LocalDate date = LocalDate.parse(row[1], DateTimeFormatter.ofPattern("dd/MM/yyyy"));
                     statement.setDate(date);
 

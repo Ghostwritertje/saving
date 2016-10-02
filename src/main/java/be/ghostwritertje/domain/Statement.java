@@ -4,6 +4,7 @@ import javax.persistence.Entity;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import java.math.BigDecimal;
 import java.time.LocalDate;
 
 /**
@@ -21,7 +22,7 @@ public class Statement extends DomainObject {
     @JoinColumn(name = "destinationAccount_id")
     private BankAccount destinationAccount;
     private LocalDate date;
-    private Double amount;
+    private BigDecimal amount;
 
     public BankAccount getOriginatingAccount() {
         return originatingAccount;
@@ -47,11 +48,11 @@ public class Statement extends DomainObject {
         this.date = date;
     }
 
-    public Double getAmount() {
+    public BigDecimal getAmount() {
         return amount;
     }
 
-    public void setAmount(Double amount) {
+    public void setAmount(BigDecimal amount) {
         this.amount = amount;
     }
 }

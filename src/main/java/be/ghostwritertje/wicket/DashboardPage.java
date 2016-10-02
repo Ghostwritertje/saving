@@ -4,6 +4,7 @@ import be.ghostwritertje.domain.Car;
 import be.ghostwritertje.domain.Person;
 import be.ghostwritertje.services.car.CarService;
 import be.ghostwritertje.wicket.car.panel.CarInfoPanel;
+import be.ghostwritertje.wicket.model.BankAccountListInfoPanel;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.IModel;
@@ -35,5 +36,7 @@ public class DashboardPage extends BasePage<Person> {
                 item.add(new CarInfoPanel("carInfo", item.getModel()));
             }
         });
+
+        this.add(new BankAccountListInfoPanel("bankAccountView", this.getModel()));
     }
 }

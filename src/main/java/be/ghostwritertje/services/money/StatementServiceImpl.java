@@ -1,6 +1,7 @@
 package be.ghostwritertje.services.money;
 
 import be.ghostwritertje.dao.repository.StatementDao;
+import be.ghostwritertje.domain.BankAccount;
 import be.ghostwritertje.domain.Person;
 import be.ghostwritertje.domain.Statement;
 import be.ghostwritertje.services.DomainObjectReadServiceSupport;
@@ -9,6 +10,7 @@ import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
 
 import javax.annotation.PostConstruct;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -44,5 +46,15 @@ public class StatementServiceImpl extends DomainObjectReadServiceSupport<Stateme
         List<Statement> statements = new ArrayList<>();
         this.bankAccountService.findByAdministrator(administrator).forEach(bankAccount -> statements.addAll(this.dao.findByOriginatingAccount(bankAccount)));
         return statements;
+    }
+
+    @Override
+    public BigDecimal getTotal(BankAccount bankAccount) {
+        return this.dao.findByOriginatingAccount(bankAccount).stream().map(Statement::getAmount).reduce(BigDecimal.ZERO, BigDecimal::add);
+    }
+
+    @Override
+    public BigDecimal getTotal(Person owner) {
+        return this.bankAccountService.findByOwner(owner).stream().map(this::getTotal).reduce(BigDecimal.ZERO, BigDecimal::add);
     }
 }

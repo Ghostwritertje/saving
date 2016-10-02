@@ -13,5 +13,7 @@ import java.util.List;
 public interface BankAccountService extends DomainObjectReadService<BankAccount> {
     List<BankAccount> findByAdministrator(Person administrator);
 
+    List<BankAccount> findByOwner(Person owner);
+
     Iterable<BankAccount> save(Iterable<BankAccount> bankAccounts);
 }

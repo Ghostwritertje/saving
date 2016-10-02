@@ -30,6 +30,12 @@ public class BankAccountServiceImpl extends DomainObjectReadServiceSupport<BankA
     }
 
     @Override
+    public List<BankAccount> findByOwner(Person owner) {
+        return this.dao.findByOwner(owner);
+    }
+
+
+    @Override
     public Iterable<BankAccount> save(Iterable<BankAccount> bankAccounts) {
         return this.dao.save(bankAccounts);
     }
