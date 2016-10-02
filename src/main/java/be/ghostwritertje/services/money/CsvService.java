@@ -52,7 +52,7 @@ public class CsvService {
 
                 if (row.length > 0 && row[0].startsWith("BE")) {
                     Statement statement = new Statement();
-                    statement.setAmount(Math.abs(Double.parseDouble(row[10].replace(",", "."))));
+                    statement.setAmount(Double.parseDouble(row[10].replace(",", ".")));
                     LocalDate date = LocalDate.parse(row[1], DateTimeFormatter.ofPattern("dd/MM/yyyy"));
                     statement.setDate(date);
 
@@ -76,13 +76,13 @@ public class CsvService {
                         return bankAccount;
                     });
 
-                    statement.setFrom(from);
-                    statement.setTo(to);
+                    statement.setOriginatingAccount(from);
+                    statement.setDestinationAccount(to);
                     statementList.add(statement);
                 }
             }
 
-//            this.bankAccountService.save(bankAccountMap.values());
+            this.bankAccountService.save(bankAccountMap.values());
             this.statementService.save(statementList);
 
         } catch (IOException e) {

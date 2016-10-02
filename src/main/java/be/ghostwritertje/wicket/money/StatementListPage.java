@@ -45,8 +45,8 @@ public class StatementListPage extends BasePage<Person> {
 
             @Override
             protected void populateItem(ListItem<Statement> item) {
-                item.add(new Label("from", item.getModelObject().getFrom().getNumber()));
-                item.add(new Label("to", item.getModelObject().getTo().getNumber()));
+                item.add(new Label("originatingAccount", item.getModelObject().getOriginatingAccount().getNumber()));
+                item.add(new Label("destinationAccount", item.getModelObject().getDestinationAccount().getNumber()));
                 item.add(new Label("amount", item.getModelObject().getAmount()));
                 item.add(new Label("date", item.getModelObject().getDate()));
 

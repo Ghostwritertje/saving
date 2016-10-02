@@ -42,7 +42,7 @@ public class StatementServiceImpl extends DomainObjectReadServiceSupport<Stateme
     @Override
     public List<Statement> findAll(Person administrator) {
         List<Statement> statements = new ArrayList<>();
-        this.bankAccountService.findByAdministrator(administrator).forEach(bankAccount -> statements.addAll(this.dao.findByFrom(bankAccount)));
+        this.bankAccountService.findByAdministrator(administrator).forEach(bankAccount -> statements.addAll(this.dao.findByOriginatingAccount(bankAccount)));
         return statements;
     }
 }

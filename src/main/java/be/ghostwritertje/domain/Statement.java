@@ -1,6 +1,8 @@
 package be.ghostwritertje.domain;
 
 import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import java.time.LocalDate;
 
@@ -12,25 +14,29 @@ import java.time.LocalDate;
 @Table(name = "T_STATEMENT")
 public class Statement extends DomainObject {
 
-    private BankAccount from;
-    private BankAccount to;
+    @ManyToOne
+    @JoinColumn(name = "originatingAccount_id")
+    private BankAccount originatingAccount;
+    @ManyToOne
+    @JoinColumn(name = "destinationAccount_id")
+    private BankAccount destinationAccount;
     private LocalDate date;
     private Double amount;
 
-    public BankAccount getFrom() {
-        return from;
+    public BankAccount getOriginatingAccount() {
+        return originatingAccount;
     }
 
-    public void setFrom(BankAccount from) {
-        this.from = from;
+    public void setOriginatingAccount(BankAccount originatingAccount) {
+        this.originatingAccount = originatingAccount;
     }
 
-    public BankAccount getTo() {
-        return to;
+    public BankAccount getDestinationAccount() {
+        return destinationAccount;
     }
 
-    public void setTo(BankAccount to) {
-        this.to = to;
+    public void setDestinationAccount(BankAccount destinationAccount) {
+        this.destinationAccount = destinationAccount;
     }
 
     public LocalDate getDate() {

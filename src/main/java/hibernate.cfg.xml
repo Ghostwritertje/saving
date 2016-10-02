@@ -16,7 +16,7 @@
             org.hibernate.context.internal.ThreadLocalSessionContext
         </property>
 
-        <!-- Echo all executed SQL to stdout -->
+        <!-- Echo all executed SQL destinationAccount stdout -->
         <property name="show_sql">false</property>
 
         <property name="hbm2ddl.auto">create</property>

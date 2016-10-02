@@ -14,5 +14,5 @@ import java.util.List;
 @Repository
 public interface StatementDao extends CrudRepository<Statement, Integer> {
 
-    List<Statement> findByFrom(BankAccount from);
+    List<Statement> findByOriginatingAccount(BankAccount from);
 }
