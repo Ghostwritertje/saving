@@ -164,6 +164,12 @@
                             <failOnMissingWebXml>false</failOnMissingWebXml>
                             <outputDirectory>deployments</outputDirectory>
                             <warName>ROOT</warName>
+                            <properties>
+                                <application.config>openshift</application.config>
+                            </properties>
+                            <systemPropertyVariables>
+                                <application.config>openshift</application.config>
+                            </systemPropertyVariables>
                             <systemProperties>
                                 <application.config>openshift</application.config>
                             </systemProperties>
