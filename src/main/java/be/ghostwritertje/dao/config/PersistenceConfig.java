@@ -21,7 +21,7 @@ import java.util.Properties;
 @PropertySource(value = {
         "classpath:application/application.properties",
         "classpath:application/${application.config}/application.properties"
-}, ignoreResourceNotFound = true)
+})
 @EnableJpaRepositories({"be.ghostwritertje.dao.repository"})
 @ComponentScan(value = {"be.ghostwritertje.dao.config.datasource"})
 @Configuration

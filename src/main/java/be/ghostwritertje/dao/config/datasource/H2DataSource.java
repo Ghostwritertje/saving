@@ -20,9 +20,7 @@ import java.util.Properties;
 public class H2DataSource {
 
     @Bean
-    public DataSource localDataSource(
-
-    ) {
+    public DataSource localDataSource() {
         EmbeddedDatabaseBuilder builder = new EmbeddedDatabaseBuilder();
         return builder
                 .setType(EmbeddedDatabaseType.H2)
