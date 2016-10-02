@@ -6,6 +6,7 @@ import be.ghostwritertje.wicket.BasePage;
 import be.ghostwritertje.wicket.LocalDateTextField;
 import be.ghostwritertje.wicket.person.PersonModel;
 import org.apache.wicket.markup.html.form.Form;
+import org.apache.wicket.markup.html.form.NumberTextField;
 import org.apache.wicket.markup.html.form.SubmitLink;
 import org.apache.wicket.markup.html.form.TextField;
 import org.apache.wicket.model.IModel;
@@ -24,7 +25,7 @@ public class CarPage extends BasePage<Car> {
     @SpringBean
     private CarService carService;
 
-    protected CarPage(IModel<Car> model) {
+    public CarPage(IModel<Car> model) {
         super(model);
     }
 
@@ -43,6 +44,8 @@ public class CarPage extends BasePage<Car> {
 
         form.add(new TextField<String>("brand", new LambdaModel<String>(() -> this.getModelObject().getBrand(), brand -> this.getModelObject().setBrand(brand))));
         form.add(new TextField<String>("model", new LambdaModel<String>(() -> this.getModelObject().getModel(), model -> this.getModelObject().setModel(model))));
+        form.add(new NumberTextField<Double>("price", new LambdaModel<>(() -> this.getModelObject().getPurchasePrice(), model -> this.getModelObject().setPurchasePrice(model)), Double.class));
+
         form.add(new LocalDateTextField("date", new LambdaModel<LocalDate>(() -> this.getModelObject().getPurchaseDate(), date -> this.getModelObject().setPurchaseDate(date))));
         form.add(new SubmitLink("save"));
 

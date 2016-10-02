@@ -4,7 +4,7 @@ import be.ghostwritertje.domain.Person;
 import be.ghostwritertje.services.person.PersonService;
 import be.ghostwritertje.wicket.BasePage;
 import be.ghostwritertje.wicket.CustomSession;
-import be.ghostwritertje.wicket.car.pages.CarListPage;
+import be.ghostwritertje.wicket.DashboardPage;
 import be.ghostwritertje.wicket.person.PersonModel;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.PasswordTextField;
@@ -38,7 +38,7 @@ public class LoginPage extends BasePage<Person> {
                 super.onSubmit();
                 Optional.ofNullable(LoginPage.this.personService.logIn(LoginPage.this.getModelObject())).ifPresent(person -> {
                     CustomSession.get().setLoggedInPerson(person);
-                    this.setResponsePage(new CarListPage(new PersonModel(new Model<Integer>(person.getId()))));
+                    this.setResponsePage(new DashboardPage(new PersonModel(new Model<Integer>(person.getId()))));
                 });
             }
         };

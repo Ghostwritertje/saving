@@ -4,6 +4,7 @@ import be.ghostwritertje.domain.Car;
 import be.ghostwritertje.domain.Refueling;
 import be.ghostwritertje.services.car.RefuelingService;
 import be.ghostwritertje.wicket.BasePage;
+import be.ghostwritertje.wicket.car.panel.CarInfoPanel;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;
@@ -23,7 +24,7 @@ public class RefuelingListPage extends BasePage<Car> {
     @SpringBean
     private RefuelingService refuelingService;
 
-    protected RefuelingListPage(IModel<Car> model) {
+    public RefuelingListPage(IModel<Car> model) {
         super(model);
     }
 
@@ -31,6 +32,9 @@ public class RefuelingListPage extends BasePage<Car> {
     @Override
     protected void onInitialize() {
         super.onInitialize();
+
+        this.add(new CarInfoPanel("carInfo", this.getModel()));
+
         this.add(new ListView<Refueling>("refuelings", this.refuelingService.findByCar(this.getModelObject())) {
 
             @Override
