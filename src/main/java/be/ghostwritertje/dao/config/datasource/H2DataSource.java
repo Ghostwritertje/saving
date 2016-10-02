@@ -1,6 +1,7 @@
 package be.ghostwritertje.dao.config.datasource;
 
 import org.hibernate.dialect.H2Dialect;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.context.annotation.Profile;
@@ -30,14 +31,16 @@ public class H2DataSource {
     }
 
     @Bean
-    public Properties jpaProperties() {
+    public Properties jpaProperties(@Value("${h2.datasource.location}") String dataSourceLocation) {
         Properties properties = new Properties();
         properties.setProperty("connection.pool_size", "1");
         properties.setProperty("hibernate.dialect", H2Dialect.class.getName());
-        properties.setProperty("hibernate.connection.url", "jdbc:h2:/data/test");
+        properties.setProperty("hibernate.connection.url", String.format("jdbc:h2:%s", dataSourceLocation));
         properties.setProperty("hibernate.current_session_context_class", "org.hibernate.context.internal.ThreadLocalSessionContext");
         properties.setProperty("hibernate.show_sql", "true");
         properties.setProperty("hibernate.hbm2ddl.auto", "update");
+
+        System.out.println(properties.getProperty("hibernate.connection.url"));
         return properties;
     }
 }

@@ -160,7 +160,7 @@
                             <outputDirectory>deployments</outputDirectory>
                             <warName>ROOT</warName>
                             <systemProperties>
-                                <application.config>local</application.config>
+                                <application.config>openshift</application.config>
                             </systemProperties>
                         </configuration>
                     </plugin>

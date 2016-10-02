@@ -36,9 +36,21 @@ public abstract class BasePage<T> extends GenericWebPage<T> {
         this.add(new BookmarkablePageLink("loginLink", LoginPage.class)
                 .add(new VisibilityBehavior<>(component -> CustomSession.get().getLoggedInPerson() == null)));
 
-        this.add(new Label("loggedInUsername", new LambdaModel<>(() -> CustomSession.get().getLoggedInPerson().getUsername(), s -> {
-        })).add(new VisibilityBehavior<>(component -> CustomSession.get().getLoggedInPerson() != null)));
+        this.add(new Link<Person>("dashboardLink", new LambdaModel<>(() -> CustomSession.get().getLoggedInPerson(), person -> CustomSession.get().setLoggedInPerson(person))) {
 
+            @Override
+            protected void onInitialize() {
+                super.onInitialize();
+                this.add(new VisibilityBehavior<>(component -> CustomSession.get().getLoggedInPerson() != null));
+                this.add(new Label("loggedInUsername", new LambdaModel<>(() -> this.getModelObject().getUsername(), s -> this.getModelObject().setUsername(s))));
+            }
+
+            @Override
+            public void onClick() {
+                this.setResponsePage(new DashboardPage(this.getModel()));
+
+            }
+        });
 
         this.add(new Link<T>("statementsLink", this.getModel()) {
             @Override
