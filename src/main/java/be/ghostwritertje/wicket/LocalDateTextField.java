@@ -15,7 +15,7 @@ import java.util.Date;
 public class LocalDateTextField extends DateTextField {
 
     public LocalDateTextField(String id, IModel<LocalDate> model) {
-        super(id, new LambdaModel<Date>(() -> DateUtilities.toUtilDate(model.getObject()), date -> model.setObject(DateUtilities.toLocalDate(date))));
+        super(id, new LambdaModel<Date>(() -> DateUtilities.toUtilDate(model.getObject()), date -> model.setObject(DateUtilities.toLocalDate(date))), "\"dd/MM/yyyy\"");
     }
 
 

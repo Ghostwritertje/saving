@@ -12,7 +12,7 @@ import java.util.Date;
 public class DateUtilities {
 
     public static LocalDate toLocalDate(Date date) {
-        return Instant.ofEpochMilli(date.getTime()).atZone(ZoneOffset.UTC).toLocalDate();
+        return Instant.ofEpochMilli(date.getTime()).atZone(ZoneOffset.systemDefault()).toLocalDate();
     }
 
     public static Date toUtilDate(LocalDate date) {
