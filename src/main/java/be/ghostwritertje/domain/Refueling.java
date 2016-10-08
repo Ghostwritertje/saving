@@ -25,6 +25,10 @@ public class Refueling extends DomainObject {
     public Refueling() {
     }
 
+    public Double getPricePerLiter() {
+        return this.price / this.liters;
+    }
+
     public LocalDate getDate() {
         if (this.date == null) {
             this.date = LocalDate.now();
@@ -37,6 +41,9 @@ public class Refueling extends DomainObject {
     }
 
     public Double getLiters() {
+        if (this.liters == null) {
+            this.liters = 0.00;
+        }
         return liters;
     }
 
@@ -49,6 +56,9 @@ public class Refueling extends DomainObject {
     }
 
     public void setPrice(Double price) {
+        if (this.price == null) {
+            this.price = 0.00;
+        }
         this.price = price;
     }
 
