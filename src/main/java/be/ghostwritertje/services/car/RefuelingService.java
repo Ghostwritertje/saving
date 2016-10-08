@@ -15,4 +15,6 @@ public interface RefuelingService extends DomainObjectReadService<Refueling> {
     List<Refueling> findByCar(Car car);
 
     Refueling save(Refueling refueling);
+
+    void delete(Refueling refueling);
 }

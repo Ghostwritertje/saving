@@ -31,6 +31,11 @@ public class RefuelingServiceImpl extends DomainObjectReadServiceSupport<Refueli
     }
 
     @Override
+    public void delete(Refueling refueling) {
+        this.dao.delete(refueling);
+    }
+
+    @Override
     protected CrudRepository<Refueling, Integer> getDao() {
         return this.dao;
     }

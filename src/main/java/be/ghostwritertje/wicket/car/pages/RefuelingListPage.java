@@ -43,6 +43,19 @@ public class RefuelingListPage extends BasePage<Car> {
                 item.add(new Label("liters", item.getModelObject().getLiters()));
                 item.add(new Label("price", item.getModelObject().getPrice()));
                 item.add(new Label("kilometres", item.getModelObject().getKilometres()));
+                item.add(new Link<Refueling>("edit", item.getModel()) {
+                    @Override
+                    public void onClick() {
+                        this.setResponsePage(new RefuelingPage(this.getModel()));
+                    }
+                });
+                item.add(new Link<Car>("delete", RefuelingListPage.this.getModel()) {
+                    @Override
+                    public void onClick() {
+                        RefuelingListPage.this.refuelingService.delete(item.getModelObject());
+                        this.setResponsePage(new RefuelingListPage(this.getModel()));
+                    }
+                });
             }
         });
 

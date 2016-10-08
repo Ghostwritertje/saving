@@ -15,4 +15,6 @@ import java.util.List;
 public interface RefuelingDao extends CrudRepository<Refueling, Integer> {
 
     List<Refueling> findByCar(Car car);
+
+    void delete(Refueling refueling);
 }
