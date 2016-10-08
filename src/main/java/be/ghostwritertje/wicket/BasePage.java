@@ -80,8 +80,5 @@ public abstract class BasePage<T> extends GenericWebPage<T> implements Authoriza
                 this.add(new VisibilityBehavior<>(component -> CustomSession.get().getLoggedInPerson() != null));
             }
         });
-
     }
-
-
 }

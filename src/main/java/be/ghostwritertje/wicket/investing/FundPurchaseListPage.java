@@ -2,6 +2,7 @@ package be.ghostwritertje.wicket.investing;
 
 import be.ghostwritertje.domain.Person;
 import be.ghostwritertje.domain.investing.FundPurchase;
+import be.ghostwritertje.services.investing.FinanceService;
 import be.ghostwritertje.services.investing.FundPurchaseService;
 import be.ghostwritertje.wicket.BasePage;
 import be.ghostwritertje.wicket.CustomSession;
@@ -11,9 +12,11 @@ import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.IModel;
 import org.apache.wicket.model.Model;
+import org.apache.wicket.model.util.ListModel;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import java.time.LocalDate;
+import java.util.List;
 
 /**
  * Created by Jorandeboever
@@ -23,19 +26,28 @@ public class FundPurchaseListPage extends BasePage<Person> {
     @SpringBean
     private FundPurchaseService fundPurchaseService;
 
+    @SpringBean
+    private FinanceService financeService;
+
+    private IModel<List<FundPurchase>> fundPurchaseListModel;
+
     public FundPurchaseListPage() {
-        super(new Model<>(CustomSession.get().getLoggedInPerson()));
+        this(new Model<>(CustomSession.get().getLoggedInPerson()));
     }
 
     public FundPurchaseListPage(IModel<Person> model) {
         super(model);
+        this.fundPurchaseListModel = new ListModel<>(this.fundPurchaseService.findByOwner(this.getModelObject()));
     }
 
     @Override
     protected void onInitialize() {
         super.onInitialize();
 
-        this.add(new ListView<FundPurchase>("fundPurchases", this.fundPurchaseService.findByOwner(this.getModelObject())) {
+        this.add(new Label("totalCount", this.fundPurchaseListModel.getObject().stream().map(FundPurchase::getNumberOfShares).mapToInt(Number::intValue).sum()));
+        this.add(new Label("totalSum", this.financeService.getTotalPortfolio(this.fundPurchaseListModel.getObject())));
+
+        this.add(new ListView<FundPurchase>("fundPurchases", this.fundPurchaseListModel) {
             @Override
             protected void onInitialize() {
                 super.onInitialize();
