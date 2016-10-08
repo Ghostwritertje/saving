@@ -8,6 +8,7 @@ import be.ghostwritertje.wicket.model.BankAccountListInfoPanel;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;
 import org.apache.wicket.model.IModel;
+import org.apache.wicket.model.Model;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import java.util.List;
@@ -19,6 +20,10 @@ import java.util.List;
 public class DashboardPage extends BasePage<Person> {
     @SpringBean
     private CarService carService;
+
+    public DashboardPage() {
+        super(new Model<>(CustomSession.get().getLoggedInPerson()));
+    }
 
     public DashboardPage(IModel<Person> model) {
         super(model);

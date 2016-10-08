@@ -3,6 +3,7 @@ package be.ghostwritertje.wicket.person.pages;
 import be.ghostwritertje.domain.Person;
 import be.ghostwritertje.services.person.PersonService;
 import be.ghostwritertje.wicket.BasePage;
+import be.ghostwritertje.wicket.UnAuthorizedAllowed;
 import be.ghostwritertje.wicket.car.pages.CarListPage;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.Link;
@@ -14,9 +15,13 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
  * Created by Ghostwritertje
  * Date: 30-Sep-16.
  */
-public class PersonListPage extends BasePage<Void> {
+public class PersonListPage extends BasePage<Void> implements UnAuthorizedAllowed {
     @SpringBean
     private PersonService personService;
+
+    public PersonListPage() {
+        System.out.println("hello");
+    }
 
     @Override
     protected void onInitialize() {

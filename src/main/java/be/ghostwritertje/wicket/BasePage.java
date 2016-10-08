@@ -17,7 +17,7 @@ import org.apache.wicket.model.Model;
  * Created by Ghostwritertje
  * Date: 30-Sep-16.
  */
-public abstract class BasePage<T> extends GenericWebPage<T> {
+public abstract class BasePage<T> extends GenericWebPage<T> implements AuthorizationRequired {
     protected BasePage() {
         super();
     }

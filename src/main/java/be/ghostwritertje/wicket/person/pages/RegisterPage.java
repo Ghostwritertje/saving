@@ -3,6 +3,7 @@ package be.ghostwritertje.wicket.person.pages;
 import be.ghostwritertje.domain.Person;
 import be.ghostwritertje.services.person.PersonService;
 import be.ghostwritertje.wicket.BasePage;
+import be.ghostwritertje.wicket.UnAuthorizedAllowed;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.form.SubmitLink;
@@ -15,7 +16,7 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
  * Created by Jorandeboever
  * Date: 01-Oct-16.
  */
-public class RegisterPage extends BasePage<Person> {
+public class RegisterPage extends BasePage<Person> implements UnAuthorizedAllowed {
 
     @SpringBean
     private PersonService personService;

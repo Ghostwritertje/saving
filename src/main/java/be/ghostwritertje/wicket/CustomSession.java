@@ -2,24 +2,30 @@ package be.ghostwritertje.wicket;
 
 import be.ghostwritertje.domain.Person;
 import org.apache.wicket.Session;
-import org.apache.wicket.protocol.http.WebSession;
+import org.apache.wicket.authroles.authentication.AuthenticatedWebSession;
+import org.apache.wicket.authroles.authorization.strategies.role.Roles;
 import org.apache.wicket.request.Request;
 
 /**
  * Created by Jorandeboever
  * Date: 01-Oct-16.
  */
-public class CustomSession extends WebSession {
+public class CustomSession extends AuthenticatedWebSession {
 
     private Person loggedInPerson = null;
 
-    /**
-     * Constructor. Note that {@link RequestCycle} is not available until this constructor returns.
-     *
-     * @param request The current request
-     */
     public CustomSession(Request request) {
         super(request);
+    }
+
+    @Override
+    public Roles getRoles() {
+        return new Roles(Roles.USER);
+    }
+
+    @Override
+    protected boolean authenticate(String username, String password) {
+        return true;
     }
 
     public static CustomSession get() {
