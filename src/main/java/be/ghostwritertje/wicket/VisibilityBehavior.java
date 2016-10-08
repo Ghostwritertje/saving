@@ -2,8 +2,7 @@ package be.ghostwritertje.wicket;
 
 import org.apache.wicket.Component;
 import org.apache.wicket.behavior.Behavior;
-
-import java.util.function.Predicate;
+import org.apache.wicket.lambda.WicketFunction;
 
 /**
  * Created by Jorandeboever
@@ -11,15 +10,15 @@ import java.util.function.Predicate;
  */
 public class VisibilityBehavior<X extends Component> extends Behavior {
 
-    private final Predicate<? super X> visibilityLogic;
+    private final WicketFunction<? super X, Boolean> visibilityLogic;
 
-    public VisibilityBehavior(Predicate<? super X> visibilityLogic) {
+    public VisibilityBehavior(WicketFunction<? super X, Boolean> visibilityLogic) {
         this.visibilityLogic = visibilityLogic;
     }
 
     @Override
     public void onConfigure(Component component) {
         super.onConfigure(component);
-        component.setVisibilityAllowed(component.isVisibilityAllowed() && this.visibilityLogic.test((X) component));
+        component.setVisibilityAllowed(component.isVisibilityAllowed() && this.visibilityLogic.apply((X) component));
     }
 }

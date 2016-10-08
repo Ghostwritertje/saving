@@ -42,6 +42,7 @@ public class RefuelingListPage extends BasePage<Car> {
                 item.add(new Label("date", item.getModelObject().getDate()));
                 item.add(new Label("liters", item.getModelObject().getLiters()));
                 item.add(new Label("price", item.getModelObject().getPrice()));
+                item.add(new Label("kilometres", item.getModelObject().getKilometres()));
             }
         });
 

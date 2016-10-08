@@ -17,6 +17,7 @@
         <spring.version>4.3.3.RELEASE</spring.version>
         <postgres.version>9.4.1211.jre7</postgres.version>
         <hibernate.version>5.2.2.Final</hibernate.version>
+        <derby.version>10.11.1.1</derby.version>
     </properties>
 
     <dependencies>
@@ -94,7 +95,17 @@
             <artifactId>h2</artifactId>
             <version>1.4.192</version>
         </dependency>
+        <dependency>
+            <groupId>mysql</groupId>
+            <artifactId>mysql-connector-java</artifactId>
+            <version>6.0.4</version>
+        </dependency>
 
+        <dependency>
+            <groupId>org.apache.derby</groupId>
+            <artifactId>derby</artifactId>
+            <version>${derby.version}</version>
+        </dependency>
         <dependency>
             <groupId>de.agilecoders.wicket</groupId>
             <artifactId>wicket-bootstrap-core</artifactId>

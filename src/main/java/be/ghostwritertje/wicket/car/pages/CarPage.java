@@ -33,21 +33,20 @@ public class CarPage extends BasePage<Car> {
     protected void onInitialize() {
         super.onInitialize();
 
-        Form<Car> form = new Form<Car>("form", this.getModel()) {
-            @Override
-            public void onSubmit() {
-                super.onSubmit();
-                Car savedCar = CarPage.this.carService.save(this.getModelObject());
-                this.setResponsePage(new CarListPage(new PersonModel(new Model<Integer>(savedCar.getOwner().getId()))));
-            }
-        };
+        Form<Car> form = new Form<Car>("form", this.getModel());
 
         form.add(new TextField<String>("brand", new LambdaModel<String>(() -> this.getModelObject().getBrand(), brand -> this.getModelObject().setBrand(brand))));
         form.add(new TextField<String>("model", new LambdaModel<String>(() -> this.getModelObject().getModel(), model -> this.getModelObject().setModel(model))));
         form.add(new NumberTextField<Double>("price", new LambdaModel<>(() -> this.getModelObject().getPurchasePrice(), model -> this.getModelObject().setPurchasePrice(model)), Double.class));
-
         form.add(new LocalDateTextField("date", new LambdaModel<LocalDate>(() -> this.getModelObject().getPurchaseDate(), date -> this.getModelObject().setPurchaseDate(date))));
-        form.add(new SubmitLink("save"));
+        form.add(new SubmitLink("save") {
+            @Override
+            public void onSubmit() {
+                super.onSubmit();
+                Car savedCar = CarPage.this.carService.save(CarPage.this.getModelObject());
+                this.setResponsePage(new CarListPage(new PersonModel(new Model<Integer>(savedCar.getOwner().getId()))));
+            }
+        });
 
         this.add(form);
     }

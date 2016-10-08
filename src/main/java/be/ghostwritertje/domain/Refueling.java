@@ -20,6 +20,7 @@ public class Refueling extends DomainObject {
     private LocalDate date;
     private Double liters;
     private Double price;
+    private Double kilometres;
 
     public Refueling() {
     }
@@ -57,5 +58,13 @@ public class Refueling extends DomainObject {
 
     public void setCar(Car car) {
         this.car = car;
+    }
+
+    public Double getKilometres() {
+        return kilometres;
+    }
+
+    public void setKilometres(Double kilometres) {
+        this.kilometres = kilometres;
     }
 }

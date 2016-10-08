@@ -6,6 +6,7 @@ import be.ghostwritertje.wicket.BasePage;
 import be.ghostwritertje.wicket.CustomSession;
 import be.ghostwritertje.wicket.DashboardPage;
 import be.ghostwritertje.wicket.person.PersonModel;
+import org.apache.log4j.Logger;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.PasswordTextField;
 import org.apache.wicket.markup.html.form.SubmitLink;
@@ -24,8 +25,16 @@ public class LoginPage extends BasePage<Person> {
     @SpringBean
     private PersonService personService;
 
+    private static final Logger logger = Logger.getLogger(LoginPage.class);
+
     public LoginPage() {
-        super(new Model<>(new Person()));
+        super(new Model<>(initPerson()));
+    }
+
+    private static Person initPerson() {
+        Person person = new Person();
+        person.setUsername("user");
+        return person;
     }
 
     @Override
@@ -38,6 +47,7 @@ public class LoginPage extends BasePage<Person> {
                 super.onSubmit();
                 Optional.ofNullable(LoginPage.this.personService.logIn(LoginPage.this.getModelObject())).ifPresent(person -> {
                     CustomSession.get().setLoggedInPerson(person);
+                    logger.info(String.format("User %s has logged in", person.getUsername()));
                     this.setResponsePage(new DashboardPage(new PersonModel(new Model<Integer>(person.getId()))));
                 });
             }

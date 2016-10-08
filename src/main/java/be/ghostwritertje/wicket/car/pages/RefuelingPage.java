@@ -45,6 +45,7 @@ public class RefuelingPage extends BasePage<Refueling> {
         form.add(new LocalDateTextField("date", localDateLambdaModel));
         form.add(new NumberTextField<Double>("liters", new LambdaModel<Double>(() -> this.getModelObject().getLiters(), liters -> this.getModelObject().setLiters(liters)), Double.class));
         form.add(new NumberTextField<Double>("price", new LambdaModel<Double>(() -> this.getModelObject().getPrice(), price -> this.getModelObject().setPrice(price)), Double.class));
+        form.add(new NumberTextField<Double>("kilometres", new LambdaModel<Double>(() -> this.getModelObject().getKilometres(), kilometres -> this.getModelObject().setKilometres(kilometres)), Double.class));
 
         form.add(new SubmitLink("save"));
 
