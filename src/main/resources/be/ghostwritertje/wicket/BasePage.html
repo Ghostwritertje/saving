@@ -32,9 +32,22 @@
             <ul class="nav navbar-nav navbar-right">
                 <li><a wicket:id="registerLink" href="#"><span class="glyphicon glyphicon-user"></span> Sign Up</a></li>
                 <li><a wicket:id="loginLink" href="#"><span class="glyphicon glyphicon-log-in"></span> Login</a></li>
-                <li><a href="#" wicket:id="dashboardLink"><span class="glyphicon glyphicon-user"></span><span
-                        wicket:id="loggedInUsername"></span></a>
-                </li>
+                <wicket:enclosure child="dashboardLink">
+                    <li>
+                        <a href="#" wicket:id="dashboardLink">
+                            <span class="glyphicon glyphicon-user"></span>
+                            <span wicket:id="loggedInUsername"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <wicket:link>
+                            <a href="#" wicket:id="logoutLink">
+                                <span class="glyphicon glyphicon-log-out"></span>
+                                <span>Sign Out</span>
+                            </a>
+                        </wicket:link>
+                    </li>
+                </wicket:enclosure>
             </ul>
         </div>
     </div>

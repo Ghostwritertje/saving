@@ -34,13 +34,7 @@ public class LoginPage extends BasePage<Person> implements UnAuthorizedAllowed {
     private static final Logger logger = Logger.getLogger(LoginPage.class);
 
     public LoginPage() {
-        super(new Model<>(initPerson()));
-    }
-
-    private static Person initPerson() {
-        Person person = new Person();
-        person.setUsername("user");
-        return person;
+        super(new Model<>(new Person()));
     }
 
     @Override
@@ -58,7 +52,7 @@ public class LoginPage extends BasePage<Person> implements UnAuthorizedAllowed {
 
         public LoginForm(String id, IModel<Person> model) {
             super(id, model);
-            this.rememberMe = new Model<>(false);
+            this.rememberMe = new Model<>(true);
         }
 
         @Override

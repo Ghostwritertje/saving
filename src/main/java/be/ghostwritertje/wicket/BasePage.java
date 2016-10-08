@@ -3,6 +3,7 @@ package be.ghostwritertje.wicket;
 import be.ghostwritertje.domain.Person;
 import be.ghostwritertje.wicket.money.StatementListPage;
 import be.ghostwritertje.wicket.person.pages.LoginPage;
+import be.ghostwritertje.wicket.person.pages.LogoutPage;
 import be.ghostwritertje.wicket.person.pages.PersonListPage;
 import be.ghostwritertje.wicket.person.pages.RegisterPage;
 import org.apache.wicket.markup.html.GenericWebPage;
@@ -49,6 +50,14 @@ public abstract class BasePage<T> extends GenericWebPage<T> implements Authoriza
             public void onClick() {
                 this.setResponsePage(new DashboardPage(this.getModel()));
 
+            }
+        });
+
+        this.add(new Link<Person>("logoutLink") {
+            @Override
+            public void onClick() {
+                CustomSession.get().invalidate();
+                this.setResponsePage(LogoutPage.class);
             }
         });
 
