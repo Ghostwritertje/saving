@@ -1,11 +1,14 @@
 package be.ghostwritertje.wicket.investing;
 
+import be.ghostwritertje.dao.config.datasource.H2DataSource;
 import be.ghostwritertje.domain.Person;
 import be.ghostwritertje.domain.investing.FundPurchase;
 import be.ghostwritertje.services.investing.FinanceService;
 import be.ghostwritertje.services.investing.FundPurchaseService;
 import be.ghostwritertje.wicket.BasePage;
 import be.ghostwritertje.wicket.CustomSession;
+import com.google.common.util.concurrent.AbstractFuture;
+import org.apache.log4j.Logger;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.Link;
 import org.apache.wicket.markup.html.list.ListItem;
@@ -17,12 +20,17 @@ import org.apache.wicket.spring.injection.annot.SpringBean;
 
 import java.time.LocalDate;
 import java.util.List;
+import java.util.concurrent.ExecutionException;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 
 /**
  * Created by Jorandeboever
  * Date: 08-Oct-16.
  */
 public class FundPurchaseListPage extends BasePage<Person> {
+    private static final Logger logger = Logger.getLogger(H2DataSource.class);
     @SpringBean
     private FundPurchaseService fundPurchaseService;
 
@@ -30,6 +38,7 @@ public class FundPurchaseListPage extends BasePage<Person> {
     private FinanceService financeService;
 
     private IModel<List<FundPurchase>> fundPurchaseListModel;
+    private IModel<Double> totalSumModel = new Model<>();
 
     public FundPurchaseListPage() {
         this(new Model<>(CustomSession.get().getLoggedInPerson()));
@@ -86,5 +95,16 @@ public class FundPurchaseListPage extends BasePage<Person> {
                 this.setResponsePage(new FundPurchasePage(new Model<FundPurchase>(fundPurchase)));
             }
         });
+    }
+
+    public static void main(String[] args) throws ExecutionException, InterruptedException {
+        Future<Double> future = new AbstractFuture<Double>() {
+            @Override
+            public Double get(long timeout, TimeUnit unit) throws InterruptedException, TimeoutException, ExecutionException {
+                return 5.3;
+            }
+        };
+        System.out.println("hello");
+        System.out.println("bye");
     }
 }

@@ -36,6 +36,9 @@ public class FundPurchase extends DomainObject {
     private Person owner;
 
     public String getQuote() {
+        if (this.quote == null) {
+            this.quote = "";
+        }
         return quote;
     }
 

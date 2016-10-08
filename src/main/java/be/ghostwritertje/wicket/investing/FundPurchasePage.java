@@ -1,6 +1,7 @@
 package be.ghostwritertje.wicket.investing;
 
 import be.ghostwritertje.domain.investing.FundPurchase;
+import be.ghostwritertje.services.investing.FinanceService;
 import be.ghostwritertje.services.investing.FundPurchaseService;
 import be.ghostwritertje.wicket.BasePage;
 import be.ghostwritertje.wicket.LocalDateTextField;
@@ -21,6 +22,8 @@ public class FundPurchasePage extends BasePage<FundPurchase> {
     @SpringBean
     private FundPurchaseService fundPurchaseService;
 
+    @SpringBean
+    private FinanceService financeService;
     public FundPurchasePage(IModel<FundPurchase> model) {
         super(model);
     }
