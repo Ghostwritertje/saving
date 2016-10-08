@@ -42,6 +42,11 @@ public class StatementListPage extends BasePage<Person> {
         super.onInitialize();
 
         this.add(new ListView<Statement>("statements", this.statementService.findAll(this.getModelObject())) {
+            @Override
+            protected void onInitialize() {
+                super.onInitialize();
+                this.setViewSize(25);
+            }
 
             @Override
             protected void populateItem(ListItem<Statement> item) {
@@ -49,7 +54,6 @@ public class StatementListPage extends BasePage<Person> {
                 item.add(new Label("destinationAccount", item.getModelObject().getDestinationAccount().getNumber()));
                 item.add(new Label("amount", item.getModelObject().getAmount()));
                 item.add(new Label("date", item.getModelObject().getDate()));
-
             }
         });
 

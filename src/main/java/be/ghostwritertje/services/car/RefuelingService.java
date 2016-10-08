@@ -2,7 +2,7 @@ package be.ghostwritertje.services.car;
 
 import be.ghostwritertje.domain.Car;
 import be.ghostwritertje.domain.Refueling;
-import be.ghostwritertje.services.DomainObjectReadService;
+import be.ghostwritertje.services.DomainObjectCrudService;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ import java.util.List;
  * Created by Jorandeboever
  * Date: 01-Oct-16.
  */
-public interface RefuelingService extends DomainObjectReadService<Refueling> {
+public interface RefuelingService extends DomainObjectCrudService<Refueling> {
 
     List<Refueling> findByCar(Car car);
 

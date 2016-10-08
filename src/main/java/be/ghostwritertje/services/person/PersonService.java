@@ -1,7 +1,7 @@
 package be.ghostwritertje.services.person;
 
 import be.ghostwritertje.domain.Person;
-import be.ghostwritertje.services.DomainObjectReadService;
+import be.ghostwritertje.services.DomainObjectCrudService;
 
 import java.util.List;
 
@@ -9,7 +9,7 @@ import java.util.List;
  * Created by Ghostwritertje
  * Date: 29-Sep-16.
  */
-public interface PersonService extends DomainObjectReadService<Person> {
+public interface PersonService extends DomainObjectCrudService<Person> {
     String getLoggedInUser();
 
     List<Person> findAll();

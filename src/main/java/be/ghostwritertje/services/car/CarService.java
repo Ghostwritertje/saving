@@ -2,7 +2,7 @@ package be.ghostwritertje.services.car;
 
 import be.ghostwritertje.domain.Car;
 import be.ghostwritertje.domain.Person;
-import be.ghostwritertje.services.DomainObjectReadService;
+import be.ghostwritertje.services.DomainObjectCrudService;
 
 import java.util.List;
 
@@ -10,7 +10,7 @@ import java.util.List;
  * Created by Jorandeboever
  * Date: 01-Oct-16.
  */
-public interface CarService extends DomainObjectReadService<Car> {
+public interface CarService extends DomainObjectCrudService<Car> {
     List<Car> findAll(Person person);
 
     Car save(Car car);

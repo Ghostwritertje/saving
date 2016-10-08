@@ -4,7 +4,7 @@ import be.ghostwritertje.dao.repository.StatementDao;
 import be.ghostwritertje.domain.BankAccount;
 import be.ghostwritertje.domain.Person;
 import be.ghostwritertje.domain.Statement;
-import be.ghostwritertje.services.DomainObjectReadServiceSupport;
+import be.ghostwritertje.services.DomainObjectCrudServiceSupport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
@@ -19,7 +19,7 @@ import java.util.List;
  * Date: 01-Oct-16.
  */
 @Service
-public class StatementServiceImpl extends DomainObjectReadServiceSupport<Statement> implements StatementService {
+public class StatementServiceImpl extends DomainObjectCrudServiceSupport<Statement> implements StatementService {
     @Autowired
     private StatementDao dao;
 

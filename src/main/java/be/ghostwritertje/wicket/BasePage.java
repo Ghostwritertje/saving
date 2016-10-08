@@ -1,6 +1,7 @@
 package be.ghostwritertje.wicket;
 
 import be.ghostwritertje.domain.Person;
+import be.ghostwritertje.wicket.investing.FundPurchaseListPage;
 import be.ghostwritertje.wicket.money.StatementListPage;
 import be.ghostwritertje.wicket.person.pages.LoginPage;
 import be.ghostwritertje.wicket.person.pages.LogoutPage;
@@ -50,6 +51,12 @@ public abstract class BasePage<T> extends GenericWebPage<T> implements Authoriza
             public void onClick() {
                 this.setResponsePage(new DashboardPage(this.getModel()));
 
+            }
+        });
+        this.add(new Link<Person>("fundPurchasesLink") {
+            @Override
+            public void onClick() {
+                this.setResponsePage(FundPurchaseListPage.class);
             }
         });
 

@@ -3,7 +3,7 @@ package be.ghostwritertje.services.car;
 import be.ghostwritertje.dao.repository.CarDao;
 import be.ghostwritertje.domain.Car;
 import be.ghostwritertje.domain.Person;
-import be.ghostwritertje.services.DomainObjectReadServiceSupport;
+import be.ghostwritertje.services.DomainObjectCrudServiceSupport;
 import be.ghostwritertje.services.person.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
@@ -16,7 +16,7 @@ import java.util.List;
  * Date: 01-Oct-16.
  */
 @Service
-public class CarServiceImpl extends DomainObjectReadServiceSupport<Car> implements CarService {
+public class CarServiceImpl extends DomainObjectCrudServiceSupport<Car> implements CarService {
     @Autowired
     private CarDao dao;
 

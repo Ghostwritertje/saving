@@ -3,7 +3,7 @@ package be.ghostwritertje.services.car;
 import be.ghostwritertje.dao.repository.RefuelingDao;
 import be.ghostwritertje.domain.Car;
 import be.ghostwritertje.domain.Refueling;
-import be.ghostwritertje.services.DomainObjectReadServiceSupport;
+import be.ghostwritertje.services.DomainObjectCrudServiceSupport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
@@ -15,7 +15,7 @@ import java.util.List;
  * Date: 01-Oct-16.
  */
 @Service
-public class RefuelingServiceImpl extends DomainObjectReadServiceSupport<Refueling> implements RefuelingService {
+public class RefuelingServiceImpl extends DomainObjectCrudServiceSupport<Refueling> implements RefuelingService {
 
     @Autowired
     private RefuelingDao dao;

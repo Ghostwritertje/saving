@@ -2,7 +2,7 @@ package be.ghostwritertje.services.person;
 
 import be.ghostwritertje.dao.repository.PersonDao;
 import be.ghostwritertje.domain.Person;
-import be.ghostwritertje.services.DomainObjectReadServiceSupport;
+import be.ghostwritertje.services.DomainObjectCrudServiceSupport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Service;
@@ -15,7 +15,7 @@ import java.util.List;
  * Date: 29-Sep-16.
  */
 @Service
-public class PersonServiceImpl extends DomainObjectReadServiceSupport<Person> implements PersonService {
+public class PersonServiceImpl extends DomainObjectCrudServiceSupport<Person> implements PersonService {
     @Autowired
     private PersonDao dao;
 
