@@ -1,6 +1,6 @@
 package be.ghostwritertje.wicket.car.pages;
 
-import be.ghostwritertje.domain.Refueling;
+import be.ghostwritertje.domain.car.Refueling;
 import be.ghostwritertje.services.car.RefuelingService;
 import be.ghostwritertje.wicket.BasePage;
 import be.ghostwritertje.wicket.LocalDateTextField;

@@ -1,6 +1,6 @@
 package be.ghostwritertje.wicket.car.model;
 
-import be.ghostwritertje.domain.Car;
+import be.ghostwritertje.domain.car.Car;
 import be.ghostwritertje.services.car.CarService;
 import be.ghostwritertje.wicket.model.LoadableModel;
 import org.apache.wicket.model.IModel;

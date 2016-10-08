@@ -1,9 +1,9 @@
-package be.ghostwritertje.wicket.money;
+package be.ghostwritertje.wicket.budgetting;
 
 import be.ghostwritertje.domain.Person;
-import be.ghostwritertje.domain.Statement;
-import be.ghostwritertje.services.money.CsvService;
-import be.ghostwritertje.services.money.StatementService;
+import be.ghostwritertje.domain.budgetting.Statement;
+import be.ghostwritertje.services.budgetting.CsvService;
+import be.ghostwritertje.services.budgetting.StatementService;
 import be.ghostwritertje.wicket.BasePage;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.Form;

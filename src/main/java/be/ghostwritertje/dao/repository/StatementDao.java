@@ -1,7 +1,7 @@
 package be.ghostwritertje.dao.repository;
 
-import be.ghostwritertje.domain.BankAccount;
-import be.ghostwritertje.domain.Statement;
+import be.ghostwritertje.domain.budgetting.BankAccount;
+import be.ghostwritertje.domain.budgetting.Statement;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

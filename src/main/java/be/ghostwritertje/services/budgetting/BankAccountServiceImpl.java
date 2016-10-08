@@ -1,8 +1,8 @@
-package be.ghostwritertje.services.money;
+package be.ghostwritertje.services.budgetting;
 
 import be.ghostwritertje.dao.repository.BankAccountDao;
-import be.ghostwritertje.domain.BankAccount;
 import be.ghostwritertje.domain.Person;
+import be.ghostwritertje.domain.budgetting.BankAccount;
 import be.ghostwritertje.services.DomainObjectCrudServiceSupport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;

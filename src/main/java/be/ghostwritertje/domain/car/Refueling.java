@@ -1,4 +1,6 @@
-package be.ghostwritertje.domain;
+package be.ghostwritertje.domain.car;
+
+import be.ghostwritertje.domain.DomainObject;
 
 import javax.persistence.Entity;
 import javax.persistence.JoinColumn;

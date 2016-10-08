@@ -1,6 +1,6 @@
 package be.ghostwritertje.wicket.car.panel;
 
-import be.ghostwritertje.domain.Car;
+import be.ghostwritertje.domain.car.Car;
 import be.ghostwritertje.wicket.car.pages.RefuelingListPage;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.link.Link;

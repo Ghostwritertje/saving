@@ -1,9 +1,9 @@
 package be.ghostwritertje.wicket.model;
 
-import be.ghostwritertje.domain.BankAccount;
 import be.ghostwritertje.domain.Person;
-import be.ghostwritertje.services.money.BankAccountService;
-import be.ghostwritertje.services.money.StatementService;
+import be.ghostwritertje.domain.budgetting.BankAccount;
+import be.ghostwritertje.services.budgetting.BankAccountService;
+import be.ghostwritertje.services.budgetting.StatementService;
 import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.list.ListItem;
 import org.apache.wicket.markup.html.list.ListView;

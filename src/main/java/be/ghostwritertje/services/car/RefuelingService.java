@@ -1,7 +1,7 @@
 package be.ghostwritertje.services.car;
 
-import be.ghostwritertje.domain.Car;
-import be.ghostwritertje.domain.Refueling;
+import be.ghostwritertje.domain.car.Car;
+import be.ghostwritertje.domain.car.Refueling;
 import be.ghostwritertje.services.DomainObjectCrudService;
 
 import java.util.List;

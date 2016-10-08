@@ -1,7 +1,7 @@
 package be.ghostwritertje.dao.repository;
 
-import be.ghostwritertje.domain.Car;
-import be.ghostwritertje.domain.Refueling;
+import be.ghostwritertje.domain.car.Car;
+import be.ghostwritertje.domain.car.Refueling;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 

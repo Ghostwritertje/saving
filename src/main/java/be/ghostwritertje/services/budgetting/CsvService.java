@@ -1,9 +1,9 @@
-package be.ghostwritertje.services.money;
+package be.ghostwritertje.services.budgetting;
 
 
-import be.ghostwritertje.domain.BankAccount;
 import be.ghostwritertje.domain.Person;
-import be.ghostwritertje.domain.Statement;
+import be.ghostwritertje.domain.budgetting.BankAccount;
+import be.ghostwritertje.domain.budgetting.Statement;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

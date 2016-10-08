@@ -1,8 +1,8 @@
 package be.ghostwritertje.wicket.car.pages;
 
-import be.ghostwritertje.domain.Car;
 import be.ghostwritertje.domain.Person;
-import be.ghostwritertje.domain.Refueling;
+import be.ghostwritertje.domain.car.Car;
+import be.ghostwritertje.domain.car.Refueling;
 import be.ghostwritertje.services.car.CarService;
 import be.ghostwritertje.wicket.BasePage;
 import org.apache.wicket.markup.html.basic.Label;

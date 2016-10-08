@@ -1,8 +1,8 @@
 package be.ghostwritertje.services.car;
 
 import be.ghostwritertje.dao.repository.CarDao;
-import be.ghostwritertje.domain.Car;
 import be.ghostwritertje.domain.Person;
+import be.ghostwritertje.domain.car.Car;
 import be.ghostwritertje.services.DomainObjectCrudServiceSupport;
 import be.ghostwritertje.services.person.PersonService;
 import org.springframework.beans.factory.annotation.Autowired;

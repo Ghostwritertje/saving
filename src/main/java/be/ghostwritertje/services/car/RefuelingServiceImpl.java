@@ -1,8 +1,8 @@
 package be.ghostwritertje.services.car;
 
 import be.ghostwritertje.dao.repository.RefuelingDao;
-import be.ghostwritertje.domain.Car;
-import be.ghostwritertje.domain.Refueling;
+import be.ghostwritertje.domain.car.Car;
+import be.ghostwritertje.domain.car.Refueling;
 import be.ghostwritertje.services.DomainObjectCrudServiceSupport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;

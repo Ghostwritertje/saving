@@ -1,7 +1,7 @@
 package be.ghostwritertje.wicket;
 
-import be.ghostwritertje.domain.Car;
 import be.ghostwritertje.domain.Person;
+import be.ghostwritertje.domain.car.Car;
 import be.ghostwritertje.services.car.CarService;
 import be.ghostwritertje.wicket.car.panel.CarInfoPanel;
 import be.ghostwritertje.wicket.model.BankAccountListInfoPanel;

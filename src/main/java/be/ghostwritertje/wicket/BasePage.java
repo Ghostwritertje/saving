@@ -1,8 +1,8 @@
 package be.ghostwritertje.wicket;
 
 import be.ghostwritertje.domain.Person;
+import be.ghostwritertje.wicket.budgetting.StatementListPage;
 import be.ghostwritertje.wicket.investing.FundPurchaseListPage;
-import be.ghostwritertje.wicket.money.StatementListPage;
 import be.ghostwritertje.wicket.person.pages.LoginPage;
 import be.ghostwritertje.wicket.person.pages.LogoutPage;
 import be.ghostwritertje.wicket.person.pages.PersonListPage;
