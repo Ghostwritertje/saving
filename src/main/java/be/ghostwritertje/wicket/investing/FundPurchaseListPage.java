@@ -43,7 +43,7 @@ public class FundPurchaseListPage extends BasePage<Person> {
     @Override
     protected void onInitialize() {
         super.onInitialize();
-
+        this.add(new Label("totalInvested", this.fundPurchaseListModel.getObject().stream().map((fundPurchase) -> fundPurchase.getNumberOfShares() * fundPurchase.getSharePrice()).mapToDouble(Number::doubleValue).sum()));
         this.add(new Label("totalCount", this.fundPurchaseListModel.getObject().stream().map(FundPurchase::getNumberOfShares).mapToInt(Number::intValue).sum()));
         this.add(new Label("totalSum", this.financeService.getTotalPortfolio(this.fundPurchaseListModel.getObject())));
 
