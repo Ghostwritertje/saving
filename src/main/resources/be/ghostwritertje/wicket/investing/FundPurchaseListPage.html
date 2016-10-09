@@ -22,14 +22,18 @@
                     <h4 class="list-group-item-heading">Number of shares</h4>
                     <p class="list-group-item-text"><label wicket:id="totalCount"></label></p>
                 </a>
-                <a href="#" class="list-group-item">
-                    <h4 class="list-group-item-heading">Annual Performance</h4>
-                    <p class="list-group-item-text"><label wicket:id="annualPerformance"></label></p>
-                </a>
-                <a href="#" class="list-group-item">
-                    <h4 class="list-group-item-heading">Added Value</h4>
-                    <p class="list-group-item-text"><label wicket:id="addedValuePercentage"></label></p>
-                </a>
+                <wicket:enclosure child="annualPerformance">
+                    <a href="#" class="list-group-item">
+                        <h4 class="list-group-item-heading">Annual Performance</h4>
+                        <p class="list-group-item-text"><label wicket:id="annualPerformance"></label></p>
+                    </a>
+                </wicket:enclosure>
+                <wicket:enclosure child="addedValuePercentage">
+                    <a href="#" class="list-group-item">
+                        <h4 class="list-group-item-heading">Added Value</h4>
+                        <p class="list-group-item-text"><label wicket:id="addedValuePercentage"></label></p>
+                    </a>
+                </wicket:enclosure>
             </div>
         </div>
         <div class=" col-sm-8">
@@ -43,8 +47,7 @@
                     <th>Shareprice</th>
                     <th>Count</th>
                     <th>Transaction Cost</th>
-                    <th>Edit</th>
-                    <th>Delete</th>
+                    <th>Actions</th>
                 </tr>
                 </thead>
                 <tbody>
@@ -54,8 +57,10 @@
                     <td wicket:id="sharePrice"></td>
                     <td wicket:id="count"></td>
                     <td wicket:id="transactionCost"></td>
-                    <td><a wicket:id="edit"><span class="glyphicon glyphicon-edit"></span></a></td>
-                    <td><a wicket:id="delete"><span class="glyphicon glyphicon-trash"></span></a></td>
+                    <td>
+                        <a wicket:id="edit"><span class="glyphicon glyphicon-edit"></span></a>
+                        <a wicket:id="delete"><span class="glyphicon glyphicon-trash"></span></a>
+                    </td>
                 </tr>
                 </tbody>
             </table>
