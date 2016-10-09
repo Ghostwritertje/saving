@@ -64,6 +64,9 @@ public class FundPurchase extends DomainObject {
     }
 
     public Double getTransactionCost() {
+        if (this.transactionCost == null) {
+            this.transactionCost = 0.00;
+        }
         return transactionCost;
     }
 
@@ -72,6 +75,9 @@ public class FundPurchase extends DomainObject {
     }
 
     public Integer getNumberOfShares() {
+        if (this.numberOfShares == null) {
+            this.numberOfShares = 0;
+        }
         return numberOfShares;
     }
 
@@ -80,7 +86,14 @@ public class FundPurchase extends DomainObject {
     }
 
     public Double getSharePrice() {
+        if (this.sharePrice == null) {
+            this.sharePrice = 0.00;
+        }
         return sharePrice;
+    }
+
+    public Double getTotalCost() {
+        return this.sharePrice * this.numberOfShares.doubleValue() + this.getTransactionCost();
     }
 
     public void setSharePrice(Double sharePrice) {

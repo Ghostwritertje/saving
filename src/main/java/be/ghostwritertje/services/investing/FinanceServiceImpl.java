@@ -46,10 +46,17 @@ public class FinanceServiceImpl implements FinanceService {
 
     }
 
+    @Override
+    public InvestmentSummary calculateInvestmentSummary(List<FundPurchase> fundPurchaseList) {
+        InvestmentSummary summary = new InvestmentSummary();
+        summary.setCurrentValue(BigDecimal.valueOf(getTotalPortfolio(fundPurchaseList)));
+        summary.setFundPurchaseList(fundPurchaseList);
+        return summary;
+    }
+
     public BigDecimal getCurrentTotalValue(FundPurchase fundPurchase) {
         return this.getCurrentValue(fundPurchase).multiply(BigDecimal.valueOf(fundPurchase.getNumberOfShares()));
     }
-
 
     public BigDecimal getCurrentValue(FundPurchase fundPurchase) {
         try {

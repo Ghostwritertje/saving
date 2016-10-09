@@ -15,4 +15,6 @@ public interface FinanceService {
     BigDecimal getCurrentValue(FundPurchase fundPurchase);
 
     BigDecimal getPriceAtDate(FundPurchase fundPurchase);
+
+    InvestmentSummary calculateInvestmentSummary(List<FundPurchase> fundPurchaseList);
 }
