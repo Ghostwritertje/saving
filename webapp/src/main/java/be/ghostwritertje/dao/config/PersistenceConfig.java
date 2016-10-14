@@ -1,13 +1,14 @@
 package be.ghostwritertje.dao.config;
 
+import be.ghostwritertje.mongo.MongoConfig;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.annotation.Import;
 import org.springframework.context.annotation.PropertySource;
 import org.springframework.context.support.PropertySourcesPlaceholderConfigurer;
 import org.springframework.data.jpa.repository.config.EnableJpaRepositories;
-import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 import org.springframework.orm.jpa.JpaTransactionManager;
 import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
@@ -23,9 +24,9 @@ import java.util.Properties;
         "classpath:application/application.properties",
         "classpath:application/${application.config}/application.properties"
 }, ignoreResourceNotFound = true)
-@EnableJpaRepositories({"be.ghostwritertje.dao.repository", "be.ghostwritertje.mongo"})
+@EnableJpaRepositories({"be.ghostwritertje.dao.repository"})
+@Import(MongoConfig.class)
 @ComponentScan(value = {"be.ghostwritertje.dao.config.datasource"})
-@EnableMongoRepositories(basePackages = {"be.ghostwritertje.mongo"})
 @Configuration
 public class PersistenceConfig {
 

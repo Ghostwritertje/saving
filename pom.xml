@@ -10,7 +10,6 @@
     <modules>
         <module>mongo</module>
         <module>webapp</module>
-        <module>garbage</module>
     </modules>
     <name>saving</name>
 

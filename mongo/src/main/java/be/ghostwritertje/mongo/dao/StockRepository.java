@@ -1,5 +1,6 @@
-package be.ghostwritertje.mongo;
+package be.ghostwritertje.mongo.dao;
 
+import be.ghostwritertje.mongo.domain.Stock;
 import org.springframework.data.mongodb.repository.MongoRepository;
 
 /**

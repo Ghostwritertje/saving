@@ -1,4 +1,4 @@
-package be.ghostwritertje.dao.config.datasource;
+package be.ghostwritertje.mongo.datasource;
 
 import com.mongodb.Mongo;
 import com.mongodb.MongoClient;

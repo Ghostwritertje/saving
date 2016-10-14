@@ -100,5 +100,6 @@
     <orderEntry type="library" name="Maven: de.agilecoders.maven:maven-parent-config:0.3.5" level="project" />
     <orderEntry type="library" name="Maven: de.agilecoders.wicket:wicket-bootstrap-themes:2.0.0-M1" level="project" />
     <orderEntry type="library" name="Maven: com.yahoofinance-api:YahooFinanceAPI:3.5.0" level="project" />
+    <orderEntry type="module" module-name="mongo" />
   </component>
 </module>

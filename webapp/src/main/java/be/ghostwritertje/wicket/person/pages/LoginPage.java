@@ -1,8 +1,9 @@
 package be.ghostwritertje.wicket.person.pages;
 
 import be.ghostwritertje.domain.Person;
-import be.ghostwritertje.mongo.Stock;
-import be.ghostwritertje.mongo.StockRepository;
+import be.ghostwritertje.mongo.dao.StockRepository;
+import be.ghostwritertje.mongo.domain.HistoricPrice;
+import be.ghostwritertje.mongo.domain.Stock;
 import be.ghostwritertje.services.person.PersonService;
 import be.ghostwritertje.wicket.BasePage;
 import be.ghostwritertje.wicket.CustomSession;
@@ -24,6 +25,7 @@ import org.apache.wicket.model.LambdaModel;
 import org.apache.wicket.model.Model;
 import org.apache.wicket.spring.injection.annot.SpringBean;
 
+import java.time.LocalDate;
 import java.util.Optional;
 
 /**
@@ -49,6 +51,10 @@ public class LoginPage extends BasePage<Person> implements UnAuthorizedAllowed {
         Stock stock = new Stock();
         stock.setQuote("AAPL");
         stock.setCurrentValue(251.20);
+        HistoricPrice e = new HistoricPrice();
+        e.setPrice(451.24);
+        e.setDate(LocalDate.now());
+        stock.getHistoricPriceList().add(e);
         this.stockRepository.save(stock);
 
         this.add(new Label("aapl", this.stockRepository.findByQuote("AAPL").getCurrentValue()));

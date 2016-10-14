@@ -1,3 +1,5 @@
+package be.ghostwritertje;
+
 import be.ghostwritertje.wicket.AuthorizationRequired;
 import be.ghostwritertje.wicket.CustomSession;
 import be.ghostwritertje.wicket.DashboardPage;
