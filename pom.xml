@@ -8,7 +8,9 @@
     <packaging>pom</packaging>
     <version>1.0</version>
     <modules>
-        <module>mongo</module>
+        <module>domain</module>
+        <module>repository</module>
+        <module>services</module>
         <module>webapp</module>
     </modules>
     <name>saving</name>
@@ -25,16 +27,6 @@
         <spring.data.mongo.version>1.9.4.RELEASE</spring.data.mongo.version>
     </properties>
 
-    <repositories>
-        <repository>
-            <id>spring-milestones</id>
-            <name>Spring Milestones</name>
-            <url>https://repo.spring.io/libs-milestone</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
 
     <dependencies>
         <dependency>

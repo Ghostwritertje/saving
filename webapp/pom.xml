@@ -129,6 +129,16 @@
             <artifactId>mongo</artifactId>
             <version>1.0</version>
         </dependency>
+        <dependency>
+            <groupId>be.ghostwritertje</groupId>
+            <artifactId>domain</artifactId>
+            <version>1.0</version>
+        </dependency>
+        <dependency>
+            <groupId>be.ghostwritertje</groupId>
+            <artifactId>services</artifactId>
+            <version>1.0</version>
+        </dependency>
     </dependencies>
 
     <build>
