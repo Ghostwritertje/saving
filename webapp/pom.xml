@@ -1,41 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <parent>
+        <artifactId>saving</artifactId>
+        <groupId>be.ghostwritertje</groupId>
+        <version>1.0</version>
+    </parent>
     <modelVersion>4.0.0</modelVersion>
+    <packaging>war</packaging>
 
-    <groupId>be.ghostwritertje</groupId>
-    <artifactId>saving</artifactId>
-    <packaging>pom</packaging>
-    <version>1.0</version>
-    <modules>
-        <module>mongo</module>
-        <module>webapp</module>
-        <module>garbage</module>
-    </modules>
-    <name>saving</name>
-
-    <properties>
-        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <maven.compiler.source>1.8</maven.compiler.source>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <wicket.version>8.0.0-M1</wicket.version>
-        <spring.version>4.3.3.RELEASE</spring.version>
-        <postgres.version>9.4.1211.jre7</postgres.version>
-        <hibernate.version>5.2.2.Final</hibernate.version>
-        <derby.version>10.11.1.1</derby.version>
-        <spring.data.mongo.version>1.9.4.RELEASE</spring.data.mongo.version>
-    </properties>
-
-    <repositories>
-        <repository>
-            <id>spring-milestones</id>
-            <name>Spring Milestones</name>
-            <url>https://repo.spring.io/libs-milestone</url>
-            <snapshots>
-                <enabled>false</enabled>
-            </snapshots>
-        </repository>
-    </repositories>
+    <artifactId>webapp</artifactId>
 
     <dependencies>
         <dependency>
@@ -151,5 +126,76 @@
         </dependency>
     </dependencies>
 
+    <build>
+        <resources>
+            <resource>
+                <filtering>false</filtering>
+                <directory>src/main/resources</directory>
+                <includes>
+                    <include>**</include>
+                </includes>
+            </resource>
+            <resource>
+                <filtering>false</filtering>
+                <directory>src/main/java</directory>
+                <includes>
+                    <include>**</include>
+                </includes>
+                <excludes>
+                    <exclude>**/*.java</exclude>
+                </excludes>
+            </resource>
+        </resources>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                    <update>true</update>
+                    <url>http://127.0.0.1:8080/manager/text</url>
+                    <username>tomcat</username>
+                    <password>tomcat</password>
+                    <path>/</path>
+                    <systemProperties>
+                        <application.config>local</application.config>
+                    </systemProperties>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 
+    <profiles>
+        <profile>
+            <!-- When built in OpenShift the 'openshift' profile will be used when invoking mvn. -->
+            <!-- Use this profile for any OpenShift specific customization your app will need. -->
+            <!-- By default that is to put the resulting archive into the 'deployments' folder. -->
+            <!-- http://maven.apache.org/guides/mini/guide-building-for-different-environments.html -->
+            <id>openshift</id>
+            <build>
+                <finalName>saving</finalName>
+                <plugins>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-war-plugin</artifactId>
+                        <version>2.3</version>
+                        <configuration>
+                            <failOnMissingWebXml>false</failOnMissingWebXml>
+                            <outputDirectory>deployments</outputDirectory>
+                            <warName>ROOT</warName>
+                            <properties>
+                                <application.config>openshift</application.config>
+                            </properties>
+                            <systemPropertyVariables>
+                                <application.config>openshift</application.config>
+                            </systemPropertyVariables>
+                            <systemProperties>
+                                <application.config>openshift</application.config>
+                            </systemProperties>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
 </project>

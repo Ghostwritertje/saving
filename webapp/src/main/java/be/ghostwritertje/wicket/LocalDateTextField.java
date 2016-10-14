@@ -49,7 +49,7 @@ public class LocalDateTextField extends DateTextField {
                 private static final long serialVersionUID = 1L;
 
                 /**
-                 * @see org.apache.wicket.util.convert.converter.DateConverter#getDateFormat(java.util.Locale)
+                 * @see DateConverter#getDateFormat(Locale)
                  */
                 @Override
                 public DateFormat getDateFormat(Locale locale) {
