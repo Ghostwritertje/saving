@@ -1,6 +1,8 @@
 package be.ghostwritertje.wicket.person.pages;
 
 import be.ghostwritertje.domain.Person;
+import be.ghostwritertje.mongo.Stock;
+import be.ghostwritertje.mongo.StockRepository;
 import be.ghostwritertje.services.person.PersonService;
 import be.ghostwritertje.wicket.BasePage;
 import be.ghostwritertje.wicket.CustomSession;
@@ -11,6 +13,7 @@ import org.apache.log4j.Logger;
 import org.apache.wicket.authentication.IAuthenticationStrategy;
 import org.apache.wicket.authroles.authentication.AuthenticatedWebSession;
 import org.apache.wicket.markup.html.WebMarkupContainer;
+import org.apache.wicket.markup.html.basic.Label;
 import org.apache.wicket.markup.html.form.CheckBox;
 import org.apache.wicket.markup.html.form.Form;
 import org.apache.wicket.markup.html.form.PasswordTextField;
@@ -31,6 +34,9 @@ public class LoginPage extends BasePage<Person> implements UnAuthorizedAllowed {
     @SpringBean
     private PersonService personService;
 
+    @SpringBean
+    private StockRepository stockRepository;
+
     private static final Logger logger = Logger.getLogger(LoginPage.class);
 
     public LoginPage() {
@@ -40,6 +46,12 @@ public class LoginPage extends BasePage<Person> implements UnAuthorizedAllowed {
     @Override
     protected void onInitialize() {
         super.onInitialize();
+        Stock stock = new Stock();
+        stock.setQuote("AAPL");
+        stock.setCurrentValue(251.20);
+        this.stockRepository.save(stock);
+
+        this.add(new Label("aapl", this.stockRepository.findByQuote("AAPL").getCurrentValue()));
 
         Form<Person> form = new LoginForm("form", this.getModel());
         this.add(form);
