@@ -155,7 +155,6 @@
                         <version>2.3</version>
                         <configuration>
                             <failOnMissingWebXml>false</failOnMissingWebXml>
-                            <skip>true</skip>
                         </configuration>
                     </plugin>
                 </plugins>

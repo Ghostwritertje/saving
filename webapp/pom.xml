@@ -201,7 +201,6 @@
                             <outputDirectory>deployments</outputDirectory>
                             <warName>ROOT</warName>
                             <failOnMissingWebXml>true</failOnMissingWebXml>
-                            <skip>false</skip>
                         </configuration>
                     </plugin>
                 </plugins>
