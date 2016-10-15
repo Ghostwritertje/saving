@@ -3,14 +3,13 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>saving</artifactId>
         <groupId>saving</groupId>
+        <artifactId>saving</artifactId>
         <version>1.0</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
     <packaging>war</packaging>
-
-    <artifactId>webapp</artifactId>
+    <artifactId>root</artifactId>
 
     <dependencies>
         <dependency>
@@ -132,6 +131,8 @@
     </dependencies>
 
     <build>
+        <directory>deployments</directory>
+
         <resources>
             <resource>
                 <filtering>false</filtering>
@@ -167,8 +168,19 @@
                     </systemProperties>
                 </configuration>
             </plugin>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>2.3</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                    <outputDirectory>deployments</outputDirectory>
+                    <warName>ROOT</warName>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
+
     <profiles>
         <profile>
             <!-- When built in OpenShift the 'openshift' profile will be used when invoking mvn. -->
@@ -176,26 +188,20 @@
             <!-- By default that is to put the resulting archive into the 'deployments' folder. -->
             <!-- http://maven.apache.org/guides/mini/guide-building-for-different-environments.html -->
             <id>openshift</id>
+
             <build>
-                <finalName>webapp</finalName>
+                <finalName>saving</finalName>
+
                 <plugins>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-war-plugin</artifactId>
                         <version>2.3</version>
                         <configuration>
-                            <failOnMissingWebXml>false</failOnMissingWebXml>
                             <outputDirectory>deployments</outputDirectory>
                             <warName>ROOT</warName>
-                            <properties>
-                                <application.config>openshift</application.config>
-                            </properties>
-                            <systemPropertyVariables>
-                                <application.config>openshift</application.config>
-                            </systemPropertyVariables>
-                            <systemProperties>
-                                <application.config>openshift</application.config>
-                            </systemProperties>
+                            <failOnMissingWebXml>true</failOnMissingWebXml>
+                            <skip>false</skip>
                         </configuration>
                     </plugin>
                 </plugins>

@@ -142,20 +142,21 @@
             <!-- By default that is to put the resulting archive into the 'deployments' folder. -->
             <!-- http://maven.apache.org/guides/mini/guide-building-for-different-environments.html -->
             <id>openshift</id>
+            <modules>
+                <module>webapp</module>
+            </modules>
             <build>
                 <finalName>saving</finalName>
+
                 <plugins>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-jar-plugin</artifactId>
+                        <artifactId>maven-war-plugin</artifactId>
                         <version>2.3</version>
-                        <dependencies>
-                            <dependency>
-                                <groupId>be.ghostwritertje</groupId>
-                                <artifactId>webapp</artifactId>
-                                <version>1.0</version>
-                            </dependency>
-                        </dependencies>
+                        <configuration>
+                            <failOnMissingWebXml>false</failOnMissingWebXml>
+                            <skip>true</skip>
+                        </configuration>
                     </plugin>
                 </plugins>
             </build>
