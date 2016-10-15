@@ -1,5 +1,6 @@
 package be.ghostwritertje.services.investing;
 
+import be.ghostwritertje.domain.investing.FinancialInstrument;
 import be.ghostwritertje.domain.investing.FundPurchase;
 import be.ghostwritertje.domain.investing.HistoricPrice;
 import be.ghostwritertje.utilities.DateUtilities;
@@ -87,13 +88,13 @@ public class FinanceServiceImpl implements FinanceService {
         return exists;
     }
 
-    public List<HistoricPrice> getHistoricalQuotes(String quote) {
+    public List<HistoricPrice> createHistoricPrices(FinancialInstrument financialInstrument) {
         Calendar from = new GregorianCalendar(1950, 1, 1);
         LocalDate date = LocalDate.now();
         Calendar to = new GregorianCalendar(date.getYear(), date.getMonthValue(), date.getDayOfMonth());
 
         try {
-            return YahooFinance.get(quote, from, to, Interval.DAILY).getHistory().stream().map(this::convertToHistoricPrice).collect(Collectors.toList());
+            return YahooFinance.get(financialInstrument.getQuote(), from, to, Interval.DAILY).getHistory().stream().map(historicalQuote -> convertToHistoricPrice(historicalQuote, financialInstrument)).collect(Collectors.toList());
         } catch (IOException e) {
             e.printStackTrace();
         }
@@ -101,10 +102,11 @@ public class FinanceServiceImpl implements FinanceService {
         return new ArrayList<>();
     }
 
-    private HistoricPrice convertToHistoricPrice(HistoricalQuote historicalQuote){
+    private HistoricPrice convertToHistoricPrice(HistoricalQuote historicalQuote, FinancialInstrument financialInstrument){
         HistoricPrice historicPrice = new HistoricPrice();
         historicPrice.setDate(DateUtilities.toLocalDate(historicalQuote.getDate().getTime()));
         historicPrice.setPrice(historicalQuote.getClose().doubleValue());
+        historicPrice.setFinancialInstrument(financialInstrument);
         return historicPrice;
     }
 

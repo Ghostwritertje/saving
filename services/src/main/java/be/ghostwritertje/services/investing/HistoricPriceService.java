@@ -1,7 +1,6 @@
 package be.ghostwritertje.services.investing;
 
 import be.ghostwritertje.domain.investing.HistoricPrice;
-import be.ghostwritertje.domain.investing.Stock;
 import be.ghostwritertje.services.DomainObjectCrudService;
 
 /**
@@ -9,4 +8,5 @@ import be.ghostwritertje.services.DomainObjectCrudService;
  * Date: 15-Oct-16.
  */
 public interface HistoricPriceService extends DomainObjectCrudService<HistoricPrice> {
+    void initMissingHistoricPrices();
 }

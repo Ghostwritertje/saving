@@ -1,7 +1,6 @@
 package be.ghostwritertje.repository;
 
 import be.ghostwritertje.domain.investing.HistoricPrice;
-import be.ghostwritertje.domain.investing.Stock;
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
 
@@ -11,4 +10,5 @@ import org.springframework.stereotype.Repository;
  */
 @Repository
 public interface HistoricPriceDao extends CrudRepository<HistoricPrice, Integer> {
+
 }

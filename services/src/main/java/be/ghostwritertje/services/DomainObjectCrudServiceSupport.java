@@ -6,6 +6,7 @@ package be.ghostwritertje.services;
  */
 
 import be.ghostwritertje.domain.DomainObject;
+import com.google.common.collect.Lists;
 import org.springframework.data.repository.CrudRepository;
 
 import java.util.Iterator;
@@ -19,6 +20,10 @@ public abstract class DomainObjectCrudServiceSupport<T extends DomainObject> imp
         return this.getDao().findOne(id);
     }
 
+    public List<T> findAll() {
+        return Lists.newArrayList(this.getDao().findAll());
+    }
+
     @Override
     public void delete(T object) {
         this.getDao().delete(object);
@@ -28,7 +33,7 @@ public abstract class DomainObjectCrudServiceSupport<T extends DomainObject> imp
         return this.getDao().save(object);
     }
 
-    protected Iterable<T> save(Iterable<T> objects){
+    protected Iterable<T> save(Iterable<T> objects) {
         return this.getDao().save(objects);
     }
 }
