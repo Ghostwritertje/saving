@@ -147,22 +147,15 @@
                 <plugins>
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
-                        <artifactId>maven-war-plugin</artifactId>
+                        <artifactId>maven-jar-plugin</artifactId>
                         <version>2.3</version>
-                        <configuration>
-                            <failOnMissingWebXml>false</failOnMissingWebXml>
-                            <outputDirectory>deployments</outputDirectory>
-                            <warName>ROOT</warName>
-                            <properties>
-                                <application.config>openshift</application.config>
-                            </properties>
-                            <systemPropertyVariables>
-                                <application.config>openshift</application.config>
-                            </systemPropertyVariables>
-                            <systemProperties>
-                                <application.config>openshift</application.config>
-                            </systemProperties>
-                        </configuration>
+                        <dependencies>
+                            <dependency>
+                                <groupId>be.ghostwritertje</groupId>
+                                <artifactId>webapp</artifactId>
+                                <version>1.0</version>
+                            </dependency>
+                        </dependencies>
                     </plugin>
                 </plugins>
             </build>
