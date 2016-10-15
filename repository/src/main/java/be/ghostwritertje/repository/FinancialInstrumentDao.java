@@ -16,6 +16,6 @@ import java.util.List;
 public interface FinancialInstrumentDao extends CrudRepository<FinancialInstrument, Integer> {
     FinancialInstrument findByQuote(String quote);
 
-    @Query(value = "FROM FinancialInstrument f")
+    @Query(value = "SELECT * FROM T_FINANCIAL_INSTRUMENT a LEFT JOIN t_historic_price b ON b.financial_instrument_id = a.id WHERE b.id is NULL", nativeQuery = true)
     List<FinancialInstrument> findFinancialInstrumentsWithoutHistory();
 }

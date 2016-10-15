@@ -32,7 +32,6 @@ public class HistoricPriceServiceImpl extends DomainObjectCrudServiceSupport<His
         this.save(this.financeService.createHistoricPrices(financialInstrument));
     }
 
-
     public void initMissingHistoricPrices(){
         this.financialInstrumentService.findFinancialInstrumentsWithoutHistory().forEach(this::initHistoricPricesForStock);
     }
