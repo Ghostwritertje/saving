@@ -1,6 +1,7 @@
 package be.ghostwritertje.services.investing;
 
 import be.ghostwritertje.domain.investing.FundPurchase;
+import be.ghostwritertje.domain.investing.HistoricPrice;
 
 import java.math.BigDecimal;
 import java.util.List;
@@ -17,4 +18,8 @@ public interface FinanceService {
     BigDecimal getPriceAtDate(FundPurchase fundPurchase);
 
     InvestmentSummary calculateInvestmentSummary(List<FundPurchase> fundPurchaseList);
+
+    boolean exists(String quote);
+
+    List<HistoricPrice> getHistoricalQuotes(String quote);
 }

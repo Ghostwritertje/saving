@@ -1,8 +1,11 @@
 package be.ghostwritertje.services.investing;
 
 import be.ghostwritertje.domain.investing.FundPurchase;
+import be.ghostwritertje.domain.investing.HistoricPrice;
+import be.ghostwritertje.utilities.DateUtilities;
 import org.apache.log4j.Logger;
 import org.springframework.stereotype.Service;
+import org.springframework.util.StringUtils;
 import yahoofinance.Stock;
 import yahoofinance.YahooFinance;
 import yahoofinance.histquotes.HistoricalQuote;
@@ -11,10 +14,12 @@ import yahoofinance.histquotes.Interval;
 import java.io.IOException;
 import java.math.BigDecimal;
 import java.time.LocalDate;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 /**
  * Created by Jorandeboever
@@ -70,4 +75,37 @@ public class FinanceServiceImpl implements FinanceService {
             return BigDecimal.ZERO;
         }
     }
+
+    public boolean exists(String quote){
+        boolean exists = false;
+        try {
+            Stock stock = YahooFinance.get(quote);
+            exists = !StringUtils.isEmpty(stock.getName());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return exists;
+    }
+
+    public List<HistoricPrice> getHistoricalQuotes(String quote) {
+        Calendar from = new GregorianCalendar(1950, 1, 1);
+        LocalDate date = LocalDate.now();
+        Calendar to = new GregorianCalendar(date.getYear(), date.getMonthValue(), date.getDayOfMonth());
+
+        try {
+            return YahooFinance.get(quote, from, to, Interval.DAILY).getHistory().stream().map(this::convertToHistoricPrice).collect(Collectors.toList());
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        return new ArrayList<>();
+    }
+
+    private HistoricPrice convertToHistoricPrice(HistoricalQuote historicalQuote){
+        HistoricPrice historicPrice = new HistoricPrice();
+        historicPrice.setDate(DateUtilities.toLocalDate(historicalQuote.getDate().getTime()));
+        historicPrice.setPrice(historicalQuote.getClose().doubleValue());
+        return historicPrice;
+    }
+
 }

@@ -17,8 +17,21 @@ public class StockServiceImpl extends DomainObjectCrudServiceSupport<Stock> impl
     @Autowired
     private StockDao stockDao;
 
+    @Autowired
+    private FinanceService financeService;
+
     @Override
     protected CrudRepository<Stock, Integer> getDao() {
         return this.stockDao;
     }
+
+    @Override
+    public Stock save(Stock object) {
+        if(this.financeService.exists(object.getQuote())) {
+            return super.save(object);
+        } else {
+            return null;
+        }
+    }
+
 }

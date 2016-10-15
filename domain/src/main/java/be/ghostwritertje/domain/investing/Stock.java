@@ -2,6 +2,7 @@ package be.ghostwritertje.domain.investing;
 
 import be.ghostwritertje.domain.DomainObject;
 
+import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.OneToMany;
@@ -16,20 +17,18 @@ import java.util.List;
 @Entity
 @Table(name = "T_STOCK")
 public class Stock extends DomainObject {
+    @Column(unique = true)
     private String quote;
-    private Double currentValue;
 
     @OneToMany(fetch = FetchType.EAGER, mappedBy = "stock")
     private List<HistoricPrice> historicPriceList;
 
-    public Double getCurrentValue() {
-        return currentValue;
+    public Stock() {
     }
 
-    public void setCurrentValue(Double currentValue) {
-        this.currentValue = currentValue;
+    public Stock(String quote) {
+        this.quote = quote;
     }
-
 
     public String getQuote() {
         return quote;

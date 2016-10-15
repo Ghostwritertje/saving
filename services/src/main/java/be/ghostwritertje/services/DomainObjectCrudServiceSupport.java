@@ -8,6 +8,9 @@ package be.ghostwritertje.services;
 import be.ghostwritertje.domain.DomainObject;
 import org.springframework.data.repository.CrudRepository;
 
+import java.util.Iterator;
+import java.util.List;
+
 public abstract class DomainObjectCrudServiceSupport<T extends DomainObject> implements DomainObjectCrudService<T> {
 
     protected abstract CrudRepository<T, Integer> getDao();
@@ -23,5 +26,9 @@ public abstract class DomainObjectCrudServiceSupport<T extends DomainObject> imp
 
     public T save(T object) {
         return this.getDao().save(object);
+    }
+
+    protected Iterable<T> save(Iterable<T> objects){
+        return this.getDao().save(objects);
     }
 }
