@@ -32,6 +32,7 @@ public class HistoricPrice extends DomainObject {
         this.date = date;
     }
 
+
     public Double getPrice() {
         return price;
     }
