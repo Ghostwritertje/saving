@@ -90,8 +90,13 @@ public class FinanceServiceImpl implements FinanceService {
 
     public List<HistoricPrice> createHistoricPrices(FinancialInstrument financialInstrument) {
         Calendar from = new GregorianCalendar(1950, 1, 1);
-        LocalDate date = LocalDate.now();
-        Calendar to = new GregorianCalendar(date.getYear(), date.getMonthValue(), date.getDayOfMonth());
+        return this.createHistoricPrices(financialInstrument, LocalDate.of(1950, 1,1));
+    }
+
+    public List<HistoricPrice> createHistoricPrices(FinancialInstrument financialInstrument, LocalDate date) {
+        Calendar from = new GregorianCalendar(date.getYear(), date.getMonthValue(), date.getDayOfMonth());
+        LocalDate today = LocalDate.now();
+        Calendar to = new GregorianCalendar(today.getYear(), today.getMonthValue(), today.getDayOfMonth());
 
         try {
             return YahooFinance.get(financialInstrument.getQuote(), from, to, Interval.DAILY).getHistory().stream().map(historicalQuote -> convertToHistoricPrice(historicalQuote, financialInstrument)).collect(Collectors.toList());

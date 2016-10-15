@@ -6,7 +6,10 @@ import be.ghostwritertje.repository.HistoricPriceDao;
 import be.ghostwritertje.services.DomainObjectCrudServiceSupport;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.repository.CrudRepository;
+import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
 
 /**
  * Created by Jorandeboever
@@ -34,6 +37,11 @@ public class HistoricPriceServiceImpl extends DomainObjectCrudServiceSupport<His
 
     public void initMissingHistoricPrices(){
         this.financialInstrumentService.findFinancialInstrumentsWithoutHistory().forEach(this::initHistoricPricesForStock);
+    }
+
+    @Scheduled(cron = "0 0 5 ? * TUE-SAT")
+    public void updateHistoricPrices(){
+        this.financialInstrumentService.findAll().forEach(financialInstrument ->  this.save(this.financeService.createHistoricPrices(financialInstrument, LocalDate.now().minusDays(1))));
     }
 
 }

@@ -5,6 +5,7 @@ import be.ghostwritertje.domain.investing.HistoricPrice;
 import be.ghostwritertje.domain.investing.FinancialInstrument;
 
 import java.math.BigDecimal;
+import java.time.LocalDate;
 import java.util.List;
 
 /**
@@ -23,4 +24,6 @@ public interface FinanceService {
     boolean exists(String quote);
 
     List<HistoricPrice> createHistoricPrices(FinancialInstrument financialInstrument);
+
+    List<HistoricPrice> createHistoricPrices(FinancialInstrument financialInstrument, LocalDate localDate);
 }
